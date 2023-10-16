@@ -18,7 +18,7 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 
 ## Bus Devices
 
-![Protocol stack](https://github.com/cdg66/IP-BUS_figures/blob/main/Controller.svg)
+![Protocol stack](https://github.com/cdg66/IP-BUS_figures/blob/main/Controller_Bridge.svg)
 
 ## Packet achitecture
 
