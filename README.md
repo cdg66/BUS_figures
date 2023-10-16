@@ -22,7 +22,21 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 
 ## Packet achitecture
 
-**to be written**
+### Protocol layer (P)
+
+### Network layer
+
+#### Contol Messages (C)
+
+#### Interrupt Messages (I)
+
+#### Bomerang Messages (B)
+
+#### Stream Messages (S)
+
+### Bus Position Identification (BPI)
+
+### High level Messages
 
 ![Protocol stack](https://github.com/cdg66/IP-BUS_figures/blob/main/Protocol_stack.svg)
 
