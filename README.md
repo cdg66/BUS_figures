@@ -1,16 +1,22 @@
-# ___-Bus
-**___ Bus**
+# SHER-Bus
+**SHER-Bus**
 
-![Bus Layout](https://github.com/cdg66/BUS_figures/blob/main/BUS_layout.svg)
+**S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
 
-## What is ___-Bus?
+or
+
+**S**HER-Bus **H**andles **E**xtensive **R**esource **B**ridging, **U**nifying **S**ystems
+
+![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
+
+## What is SHER-Bus?
 
  It's a serial bus design to aggregate to one to multiple differential pair many low speed serial bus found in modern electronics.
  As low speed serial bus examples are UART, SPI, I2C, CAN, PWM, PCM, etc.
  
  This bus can also support more general usage like, humain-machine interface (keyboard), audio (I2S, SPDIF), low-resolution video (spi tft lcd), motor control (stepper), General Purpose Input Output (GPIO), etc.
  
-___-Bus is also great for general purpose communication between controller because of its simple and modular protocol.
+SHER-Bus is also great for general purpose communication between controller because of its simple and modular protocol.
 
 ## Bus design
 
@@ -18,7 +24,7 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 
 ## Bus Devices
 
-![Protocol stack](https://github.com/cdg66/BUS_figures/blob/main/Controller_Bridge.svg)
+![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controller_Bridge.svg)
 
 ## Packet achitecture
 
@@ -38,6 +44,6 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 
 ### High level Messages
 
-![Protocol stack](https://github.com/cdg66/BUS_figures/blob/main/Protocol_stack.svg)
+![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Protocol_stack.svg)
 
 
