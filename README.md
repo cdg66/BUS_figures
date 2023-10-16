@@ -11,12 +11,12 @@ or
 
 ## What is SHER-Bus?
 
- It's a serial bus design to aggregate to one to multiple differential pair many low speed serial bus found in modern electronics.
- As low speed serial bus examples are SPI, I2C, CAN, PWM, PCM, etc.
+ It's a serial bus design to aggregate many low speed serial bus found in modern electronics to one/multiple high sppeed differential(s) pair(s) .
+Low speed serial bus examples are SPI, I2C, CAN, PWM, PCM, etc.
  
- This bus can also support more general usage like, humain-machine interface (keyboard), audio (I2S, SPDIF), low-resolution video (spi tft lcd), motor control (stepper), General purpose communication (like UART , JASON, protobuf, modbus) General Purpose Input Output (GPIO), etc.
+ This bus can also support more general usage like, humain-machine interface (keyboard,keypad,game controller,joysticks), audio (I2S, SPDIF), low-resolution video (monochome oleds,spi tft lcd), motor control (stepper), General Purpose Input Output (GPIO), etc.
  
-SHER-Bus is also great for general purpose communication between controller because of its simple and modular protocol.
+SHER-Bus is also great for general purpose communication (like UART , JASON, protobuf, modbus, etc) between controller because of its simple and modular protocol.
 
 ## Bus design
 
