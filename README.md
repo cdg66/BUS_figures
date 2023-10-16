@@ -24,7 +24,7 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 
 ## Bus Devices
 
-![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controller_Bridge.svg)
+![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controller_Bridge.svg)
 
 ## Packet achitecture
 
