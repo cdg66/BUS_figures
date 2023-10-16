@@ -14,7 +14,7 @@ IP-Bus is also great for general purpose communication between controller becaus
 
 ## Bus design
 
-The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. Up to 32 device (30controler/brige and 2 endbus bridge) can be connected to a single differential lane. Multiple serial connection (like in a backplane) can be added to increase speed. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio.
+The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. Up to 32 device (30controler/bridge and 2 END bridge) can be connected to a single differential lane. Multiple serial connection (like in a backplane) can be added to increase speed. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio.
 
 ## Bus Devices
 
