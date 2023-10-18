@@ -1,4 +1,8 @@
 # SHER-Bus
+> **Warning**
+> Content is not fixed and suject to change without notice!
+
+
 **SHER-Bus**
 
 **S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
@@ -20,7 +24,7 @@ SHER-Bus is also great for general purpose communication (like UART , JASON, pro
 
 ## Bus design
 
-The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. Up to 32 device (30controler/bridge and 2 END bridge) can be connected to a single differential lane. Multiple serial connection (like in a backplane) can be added to increase speed. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio.
+The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. Up to 32 device (30controler/bridge and 2 END bridge) can be connected to a single differential lane. Multiple serial connection (like in a backplane) can be added to increase throughput. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio.
 
 ## Bus Devices
 
