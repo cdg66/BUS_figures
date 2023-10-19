@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-19T17:03:08.041Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" etag="NJyE8gbSLnKKn1bfO2JH" version="22.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-19T17:12:12.305Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" etag="Agyb9Y_RuNtU_YTFqQMP" version="22.0.4" type="github">
   <diagram name="Page-1" id="CrPAwIUL2ZfjKtLn0wMb">
     <mxGraphModel dx="1593" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -99,6 +99,9 @@
         </mxCell>
         <mxCell id="b1djfGqg2ih72hc1hO60-44" value="&lt;div&gt;BPI&lt;br&gt;&lt;/div&gt;&lt;div&gt;(1)&lt;br&gt;&lt;/div&gt;&lt;div&gt;1bit&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="440" y="420" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1djfGqg2ih72hc1hO60-45" value="CRC from P to end of payload" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="380" width="250" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
