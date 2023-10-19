@@ -31,10 +31,15 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 ![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controller_Bridge.svg)
 
 ## Packet achitecture
+![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Protocol_stack.svg)
 
 ### Protocol layer (P)
 
+![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/(P).svg)
+
 ### Network layer
+
+![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/(CIBS).svg)
 
 #### Contol Messages (C)
 
@@ -45,9 +50,11 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 #### Stream Messages (S)
 
 ### Bus Position Identification (BPI)
+![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
 
 ### High level Messages
 
-![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Protocol_stack.svg)
+### Transaction Example
+![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/example_message.svg)
 
 
