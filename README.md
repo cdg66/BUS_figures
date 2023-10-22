@@ -1,4 +1,4 @@
-# SHER-Bus
+# SHER-Bus Pre-specifcation
 > **Warning**
 > Content is not fixed and suject to change without notice!
 
@@ -56,7 +56,7 @@ In third, There is the End bridge which job is to connect multiple SHER-Bus toge
 
 ## Packet achitecture
 
-The packet architecture follow the same philosopy taken by the RISC-V cpu achitecture. Only a set of instruction is mandatory and each set is labeled by a letter.(ex.: I M C A F D Q for risc-V CPU) or a word/achronim (ex.: Zicsr). What is different because of the nature of communication is that each layer is embeded into the payolad of layers under it. For example a Audio packet (A) is embeded into a Bus Protocol Identification [BPI] which is at his turn embeded into a stream package (S) which is at his turn embeded into a protocol package (S). Whe have structure like P(S(BPI(A))), but if that audio message is adressed to everyone on the bus we can remove the BPI layer and have message structured like this : P(S(A)). This greatly increase the flexibility of the bus. A reciver can perform and AND wise mask to the whole message to see if the message is of interest to him  and discard those who aren't (ex.: an I2C brdge dont care about an audio(A) package but an I2S bridge do). 
+The packet architecture follow the same philosopy taken by the RISC-V cpu achitecture. Only one set of instruction is mandatory and each set is labeled by a letter.(ex.: I M C A F D Q for risc-V CPU) or a word/achronim (ex.: Zicsr). What is different because of the nature of communication is that each layer is embeded into the payolad of layers under it. For example a Audio packet (A) is embeded into a Bus Protocol Identification [BPI] which is at his turn embeded into a stream package (S) which is at his turn embeded into a protocol package (S). Whe have structure like P(S(BPI(A))), but if that audio message is adressed to everyone on the bus we can remove the BPI layer and have message structured like this : P(S(A)). This greatly increase the flexibility of the bus. A reciver can perform and AND wise mask to the whole message to see if the message is of interest to him  and discard those who aren't (ex.: an I2C brdge dont care about an audio(A) package but an I2S bridge do). 
 
 ![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Protocol_stack.svg)
 
@@ -80,7 +80,7 @@ Interrupt Messages are designed to be as close as possible to  computer interrup
 
 #### Bomerang Messages (B)
 
-Bomerang Messages, like in their name sugest, are meant to come back to the sender. Uppon reception of a (B) message the reciver use it to perform an action and then send back the same message with modifcation according to that action. The (B) message are an exception because the must support the Bus Position Identification messages, otherwise who everyone on the bus would send back the message. Sending back the same message ensure that it was recived correctly and allow de syncronisation of transaction(the back and forth can happen with other message seprating them). An example would be an I2C read on the bus. A controller  coul ask for read of W adress X i2c salve on the Y I2C bus of Z bridge. The bridge would respond after performing the read that he recived n bytes of data from W adress X i2c salve on the Y I2C bus by sending back the same message but swapping the reciver/tranciver byte of the [BPI] and appedning the readed data. 
+Bomerang Messages, like in their name sugest, are meant to come back to the sender. Uppon reception of a (B) message the reciver use it to perform an action and then send back the same message with modifcation according to that action. The (B) message are an exception because they must support the Bus Position Identification messages, otherwise everyone on the bus would send back the message. Sending back the same message also ensure that it was recived correctly and allow de syncronisation of transaction(the back and forth can happen with other message seprating them). An example would be an I2C read on the bus. A controller  coul ask for read of W adress X i2c salve on the Y I2C bus of Z bridge. The bridge would respond after performing the read that he recived n bytes of data from W adress X i2c salve on the Y I2C bus by sending back the same message but swapping the reciver/tranciver byte of the [BPI] and appedning the readed data. 
 
 #### Stream Messages (S)
 
