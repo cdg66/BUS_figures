@@ -1,10 +1,12 @@
-# Spécification préliminaire de SHER-Bus
-> **Avertissement**
+> **Note**
+> Traduit en francais par AI et revue par personne organique.
+
+> **Warning**
 > Le contenu n'est pas fixe et peut changer sans préavis !
->
+
+
 # Spécification préliminaire de SHER-Bus
-> **Avertissement**
-> Traduit en francais par AI
+
 
 **SHER-Bus** signifie :
 
@@ -33,12 +35,12 @@ Un autre point expliquant pourquoi nous avons besoin d'un protocole comme SHER-B
 ![FreeSOC](https://github.com/cdg66/SHER-BUS_figures/blob/main/SOC.svg)
 
 ## Conception du bus
-> **Avertissement**
+> **Warning**
 > MLVDS n'est pas un choix fixe et est sujet à des tests et à des comparaisons de prix (les transmetteurs MLVDS sont chers !)
 
 Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre en charge le multipoint dès le départ. Le bus est câblé en mode "ou" (niveau élevé dominant). Jusqu'à 32 périphériques (30 contrôleurs/ponts et 2 ponts de terminaison) peuvent être connectés à une seule voie différentielle. Bien que 30 périphériques puissent sembler limités, la limite théorique de périphériques I2C sur SHER-Bus est de 22098 ![^1]. Des connexions série multiples (comme dans un châssis arrière) peuvent être ajoutées pour augmenter le débit. L'horloge est intégrée dans le flux de données, il n'est donc pas nécessaire d'ajouter une voie d'horloge. Une horloge optionnelle peut être ajoutée pour synchroniser des fonctions telles que l'audio. Il utilise un codage de 8 bits à 10 bits sur la couche physique pour garantir l'équilibre continu et offrir une première couche de vérification des erreurs.
 
-[^1] : 127 périphériques I2C * 6 ports maîtres I2C sur 1 pont * 29 ponts (nous avons besoin d'au moins 1 contrôleur) = 22098
+[^1]: 127 périphériques I2C * 6 ports maîtres I2C sur 1 pont * 29 ponts (nous avons besoin d'au moins 1 contrôleur) = 22098
 
 ## Périphériques du bus
 
@@ -82,7 +84,7 @@ Les messages d'interruption sont conçus pour être aussi proches que possible d
 
 #### Messages de boomerang (B)
 
-Les messages de boomerang, comme leur nom l'indique, sont destinés à revenir à l'expéditeur. À la réception d'un message (B), le récepteur l'utilise pour effectuer une action, puis renvoie le même message avec des modifications en fonction de cette action. Les messages (B) sont une exception car ils doivent prendre en charge les messages d'identification de la position du bus, sinon tout le monde sur le bus renverrait le message. Le renvoi du même message garantit également qu'il a été reçu correctement et permet la désynchronisation des transactions (l'aller-retour peut se produire avec d'autres messages pour les séparer). Un exemple serait une lecture I2C sur le bus. Un contrôleur pourrait demander la lecture de l'adresse W X du slave I2C sur le bus Y I2C du pont Z. Le pont répondrait après avoir effectué la lecture qu'il a reçu n octets de données de l'adresse W X du slave I2C sur le bus Y I2C en renvoyant le même message mais en échangeant les octets récepteur/transmetteur de la couche [BPI] et en ajoutant les données lues.
+Les messages de boomerang, comme leur nom l'indique, sont destinés à revenir à l'expéditeur. À la réception d'un message (B), le récepteur l'utilise pour effectuer une action, puis renvoie le même message avec des modifications en fonction de cette action. Les messages (B) sont une exception car ils doivent prendre en charge les messages d'identification de la position du bus, sinon tout le monde sur le bus renverrait le message. Le renvoi du même message garantit également qu'il a été reçu correctement et permet la désynchronisation des transactions (l'aller-retour peut se produire avec d'autres messages pour les séparer). Un exemple serait une lecture I2C sur le bus. Un contrôleur pourrait demander la lecture de l'adresse W  du slave I2C  X sur le bus Y I2C du pont Z. Le pont répondrait après avoir effectué la lecture qu'il a reçu n octets de données de l'adresse W du slave I2C X sur le bus I2C Y en renvoyant le même message mais en échangeant les octets récepteur/transmetteur de la couche [BPI] et en ajoutant les données lues.
 
 #### Messages de flux (S)
 
@@ -107,7 +109,7 @@ Chaque périphérique obtient son adresse en utilisant une méthode externe. Par
 Chaque périphérique obtient son adresse en demandant au SHER-Bus à l'aide d'un message de contrôle (C). À documenter.
 
 ### Messages de haut niveau
-> **Avertissement**
+> **Note**
 > À écrire
 ### Exemple de transaction
 ![Pile de protocoles](https://github.com/cdg66/SHER-BUS_figures/blob/main/example_message.svg)
