@@ -34,7 +34,7 @@ Another point a why we need a protocol like SHER-Bus is that as much RISC-V help
 > **Warning**
 > MLVDS is not a fixed choice and is suject to test and price comparaison(MLVDS tranciver are expensive!)
 > 
-The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. The bus is wired-or (level high dominant). Up to 32 device (30controler/bridge and 2 END bridge) can be connected to a single differential lane. Multiple serial connection (like in a backplane) can be added to increase throughput. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio. It use 8bit to 10bit encoding on the physical layer to ensure DC balance and give a first layer of error checking.
+The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. The bus is wired-or (level high dominant). Up to 32 device (30 controler/bridge and 2 END bridge) can be connected to a single differential lane. Multiple serial connection (like in a backplane) can be added to increase throughput. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio. It use 8bit to 10bit encoding on the physical layer to ensure DC balance and give a first layer of error checking.
 
 ## Bus Devices
 
@@ -46,11 +46,11 @@ First there is the controller that generate data packet for other to parse. They
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controler_example.svg)
 
-In second their is the bridge wich consist to close the gap between the new bus and the already existing protocol. They can have mutitude of serial bus(up to 6 and 1 general control channel using [BPI]). They consist of mostly ASIC  or FPGA. Altough at the time or writing no ASIC or FPGA code as been manufactured/written. Micrcocontroler can also act as bridge. Brige can be integrated into already existing design in die or in multi-die package. Folowing the design once reuse many, it help reduce redesign complexity and speeding up time to market.
+In second there is the bridge which is job is to close the gap between the new bus and the already existing protocol. They can have mutitude of serial bus(up to 6 and 1 general control channel using [BPI]). They consist of mostly ASIC  or FPGA. Altough at the time or writing no ASIC or FPGA code as been manufactured/written. Micrcocontroler can also act as bridge. Brige can be integrated into already existing design in die or in multi-die package. Folowing the design once reuse many, it help reduce redesign complexity and speeding up time to market. Bridge implementer need to be careful about licencing of existing bus as some are not free to implement.
 
 ![MultiDiedesign](https://github.com/cdg66/SHER-BUS_figures/blob/main/Intergrated_bridge.svg)
 
-In third, There is End bridge which job is to connect multiple SHER-Bus togehther or other HIGH-SPEED bus (like USB, SDIO or Ethernet). They therminate the bus that's why they are a limit of 2 that can be connected on the bus. They are complex and not mandatory.
+In third, There is the End bridge which job is to connect multiple SHER-Bus togehther or other HIGH-SPEED bus (like USB, SDIO or Ethernet). They terminate the bus(where the temination resistor are) that's why they are a limit of 2 that can be connected on the bus. They are complex and not mandatory.
 
 ## Packet achitecture
 
@@ -86,7 +86,7 @@ Stream message are for when data integrity is not important but a constant flow 
 
 ### Bus Position Identification (BPI)
 
-The Bus Position Identification give controler a way to talk with a specific device while other remain unchanged. Bridge must support BPI because they never know what bus the will be part of. Each device can have up to 7 sub-device. sub-device 0 is reserved for control or when sub-device are not used. Device can get an adress of 3 way possible: Staticly, Pseudo-Dynamicly and Dynamicly.
+The Bus Position Identification give controler a way to talk with a specific device while other remain unchanged. Bridge must support BPI because they never know what bus the will be part of. Each device can have up to 7 sub-device. sub-device 0 is reserved for control or when sub-device are not used. Device can get an adress of 3 way possible: Statically, Pseudo-Dynamicly and Dynamicly.
 ![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
 
 #### Static Adressing
