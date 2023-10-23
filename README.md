@@ -34,7 +34,7 @@ Another point as why we need a protocol like SHER-Bus is that as much RISC-V hel
 > **Warning**
 > MLVDS is not a fixed choice and is suject to test and price comparaison(MLVDS tranciver are expensive!)
 > 
-The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. The bus is wired-or (level high dominant). Up to 32 device (30 controler/bridge and 2 END bridge) can be connected to a single differential lane. 30 device can sound limited but the theorical limit of i2c device on SHER-Bus is 22098![^1] Multiple serial connection (like in a backplane) can be added to increase throughput. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio. It use 8bit to 10bit encoding on the physical layer to ensure DC balance and give a first layer of error checking.
+The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. The bus is wired-or (level high dominant). Up to 32 device (30 controler/bridge and 2 END bridge) can be connected to a single differential lane. 30 device can sound limited but the theorical limit of i2c device on SHER-Bus is 22098![^1] Multiple serial connection (like in a backplane) can be added to increase throughput. The clock is embeded into the datastream so no need to add a clock lane. An optional clock can be added to sychronise function like audio. It use 8bit to 10bit encoding (or manchester idk yet) on the physical layer to ensure DC balance and give a first layer of error checking.
 
 [^1]: 127 i2c device * 6 i2c master port on 1 bridge * 29 bridges (we need at minimum 1 controller) = 22098
 
