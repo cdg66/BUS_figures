@@ -38,9 +38,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           message: "synchronizing Readme"
           silent: true
+      - uses: tokusumi/markdown-embed-code@main
         with:
-          markdown: "README.f.md"
+          markdown: "README.fr.md"
           token: ${{ secrets.GITHUB_TOKEN }}
-          message: "synchronizing Readme.fr"
+          message: "synchronizing Readme"
           silent: true
+        
 
