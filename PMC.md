@@ -23,7 +23,7 @@ gantt
 
 Réaliser des tests pour choisir le niveau physique que SHER-Bus repose. Puisque c'est sr quoi repose tous ce que nous batirons nous devos s'assurer le plus tôt possible. les possiblitée sont M-LVDS,LVDS,B-LVDS, émulation de paire différentielle par io cmos. Nous devons faire ce travail avant de commencer a écrire la spécification car la spec dépend du niveau physique.
 
-D'un autre côté, il faut évaluer la possibilitée d'ajout d'une *shear bolt* dans le bus. En effet, un des problème des comunication sur Bus (I2C,CAN, etc) est que si un circuit brise il amène toute la communication avec lui. Il faut ajouter une mesure pour que le bus fail de manière controlée et determinée. Cela permet de 
+D'un autre côté, il faut évaluer la possibilitée d'ajout d'une *shear bolt* dans le bus (probablement un end bridge SHER-Bus2SHER-Bus). En effet, un des problème des comunication sur Bus (I2C,CAN, etc) est que si un circuit brise il amène toute la communication avec lui. Il faut ajouter une mesure pour que le bus fail de manière controlée et determinée. Cela permet de faciliter la réparation et le diagnostic des produit comportant SHER-Bus et diminuer l'obsolescence programmée.
 
 ### 1.3 spécification
 
@@ -49,7 +49,13 @@ Pour des test de bas niveau il va falloir vérifirer l'intégritée du diagramme
 
 ### 2.1 Publication de la spécification et retour de la communautée open source
 
-Lors du stage T4 la spécification sera publiée et la communautée open source sera invitée a discuter du projet. Elle sera invitée a proposer différent type d'application que le SHER-Bus pourrait suporter en plus de ceux déja pensée par l'équipe. 
+Lors du stage T4 la spécification sera publiée et la communautée open source sera invitée a discuter du projet. Elle sera invitée a proposer différent type d'application que le SHER-Bus pourrait suporter en plus de ceux déja pensée par l'équipe. Cela permet de vérifier l'intéret de la communautée. Cela permet aussi de vérifier si nontre spécification n'enfreins pas de brevet. Il serait domage de commencer la conception juste pour se faire dire que nous enfreinions le brevet de XYZ compagnie.
+
+--- 
+> "Given enough eyeballs, all bugs are shallow"
+>    - Eric S. Raymond [^1]                   
+--- 
+[^1]:  Raymond, Eric S. "The Cathedral and the Bazaar". catb.org.
 
 
 ## 3. Session 7 - Hiver 2024
@@ -78,5 +84,5 @@ Lors du stage T4 la spécification sera publiée et la communautée open source 
 
 ### 4.1 conception d'un produit démo pour MégaGéniale
 
-Bien qu'un la conception d'un bus 100% __*opensource*__ soit très intéressante, il est fort problable que cela captive pas l'attention du citoyen lambda. Avec tout ce qui a été concu avec la S7, la S8 sera consacrée a la production d'un produit démo ( bras robotisée, imprimante 3D, CNC, Casque audio, Grappe de serveurs [cluster-computer] ,etc,) utilisant SHER-Bus comme technogie principale. Le but est de montrer la technologie dans son meilleur état. le but étaut aussi de faire découvrir au concepteur la puissance de ce Bus comparée au alternative. 
+Bien qu'un la conception d'un bus 100% __*opensource*__ soit très intéressante, il est fort problable que cela captive pas l'attention du citoyen lambda. Avec tout ce qui a été concu avec la S7, la S8 sera consacrée a la production d'un produit démo ( bras robotisée, imprimante 3D, CNC, Casque audio, Grappe de serveurs [cluster-computer] ,etc,) utilisant SHER-Bus comme technogie principale. Le but est de montrer la technologie dans son meilleur état. le but étant aussi de faire découvrir au concepteur d'électronique la puissance de ce Bus comparée au alternative. 
 
