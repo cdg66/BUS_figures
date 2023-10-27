@@ -23,9 +23,7 @@ jobs:
         uses: dephraiim/translate-readme@main
         with:
           LANG: fr
-  embed-md: # this is so that the achronim dont get translated
-    runs-on: ubuntu-latest
-    steps:
+      # for achronim replacement
       - uses: actions/checkout@v2
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
@@ -44,5 +42,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           message: "synchronizing Readme"
           silent: true
-        
+          
 
