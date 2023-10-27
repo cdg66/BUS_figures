@@ -12,10 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Commit report
-        run: |
-          git config --global user.name 'cdg66'
-          git config --global user.email 'cdg66@users.noreply.github.com'
+        with:
+          ref: ${{ github.ref_name }}
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
@@ -25,5 +23,3 @@ jobs:
         uses: dephraiim/translate-readme@main
         with:
           LANG: fr
-          token: ${{ secrets.GITHUB_TOKEN}}
-          ref: ${{ github.event.pull_request.head.ref }}
