@@ -2,10 +2,9 @@
 name: Translate README
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-      - master
 jobs:
   build:
     runs-on: ubuntu-latest
