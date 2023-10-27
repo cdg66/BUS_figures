@@ -2,8 +2,11 @@
 > **Warning**
 > Content is not fixed and suject to change without notice!
 
+```Achronim.md
 
-{include} https://github.com/cdg66/SHER-Bus/blob/main/Achronim.md
+```
+
+ 
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
