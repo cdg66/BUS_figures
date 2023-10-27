@@ -1,6 +1,3 @@
-> **Note**
-> Traduit en francais par AI et revue par personne organique.
-
 > **Warning**
 > Le contenu n'est pas fixe et peut changer sans préavis !
 
