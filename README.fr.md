@@ -4,10 +4,7 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-
-
 vOlv3zg2es
-
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
