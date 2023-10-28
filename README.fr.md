@@ -4,7 +4,8 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./Acronim.md) -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
@@ -40,11 +41,11 @@ Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre e
 
 Il n'existe que 3 types d'appareils qui remplissent des fonctions différentes dans le réseau de bus.
 
-Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. En d’autres termes, leur travail consiste à être le bain de la communication. Ils se composent principalement de microcontrôleurs, d'ordinateurs embarqués (Raspberry pi) ou de FPGA.
+Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. Autrement dit, leur travail est d'être le bain de la communication. Ils se composent principalement de microcontrôleurs, d’ordinateurs embarqués (Raspberry pi) ou de FPGA.
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controler_example.svg)
 
-En deuxième lieu, il y a le pont dont la tâche consiste à combler le fossé entre le nouveau bus et le protocole déjà existant. Ils peuvent avoir plusieurs bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[IPB]). Ils sont principalement constitués d’ASIC ou de FPGA. Bien qu'à l'époque ou en écrivant aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Le microcontrôleur peut également faire office de pont. Brige peut être intégré dans une conception déjà existante sous forme de matrice ou dans un boîtier multi-matrice. En réutilisant plusieurs fois la conception, cela contribue à réduire la complexité de la refonte et à accélérer la mise sur le marché. Les responsables de la mise en œuvre du pont doivent faire attention aux licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
+En deuxième lieu, il y a le pont dont la tâche consiste à combler le fossé entre le nouveau bus et le protocole déjà existant. Ils peuvent avoir plusieurs bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[IPB]). Ils sont principalement constitués d'ASIC ou de FPGA. Bien qu'à l'époque ou en écrivant aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Le microcontrôleur peut également faire office de pont. Brige peut être intégré dans une conception déjà existante sous forme de matrice ou dans un boîtier multi-matrice. En réutilisant plusieurs fois la conception, cela contribue à réduire la complexité de la refonte et à accélérer la mise sur le marché. Les responsables de la mise en œuvre du pont doivent faire attention aux licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
 
 ![MultiDiedesign](https://github.com/cdg66/SHER-BUS_figures/blob/main/Intergrated_bridge.svg)
 
@@ -58,7 +59,7 @@ L'architecture des paquets suit la même philosophie que celle de l'architecture
 
 ### Couche de protocole (P)
 
-La couche protocole est la seule couche obligatoire de la spécification. Il gère le minimum pour être une transaction valide. L'implémenteur utilise cette couche pour envoyer un message de très bas niveau comme une communication point à point de type UART, puisque l'adressage est géré à un niveau supérieur, seule la configuration de bus point à point ou multipoint est possible en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas d'une pile lourde pour quelque chose de simple. Cela accorde également à l'implémenteur la liberté de créer une pile de protocoles personnalisée pour les applications qui ne sont pas couvertes par la pile existante. (ex. : SAE J1939 et CanOPEN sont tous deux des piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essayant de le faire. le même mais gratuit avec une pile commune qui aide l'implémenteur de pont et l'implémenteur de bus à avoir un terrain d'entente avec lequel travailler). le premier octet sert à indiquer s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. L'implémenteur peut envoyer un message personnalisé en définissant le premier octet sur 0 (0x00).
+The protocol layer is the only mandatory layer of the specification. It handle the minimum to be a valid transaction. Implementer use this layer to send very low level message like a point to point UART-like communication, since adressing is handeled in higher level only point to point or multidrop bus configuration is possible with using only this level. This is a feature because in many aplication you wouldn't want a heavy stack for something simple. This also grant implementer the freeddom to create custom protocol stack for application that arent covered by the existing stack.(ex.: SAE J1939 and CanOPEN are both stack that are built upon the unrestricitve nature of the CAN protocol, SHER-Bus trying to do the same but free with having a common stack help bridge implemter and bus implementer have a common ground to work with). the first byte is to tell if its a stadard packet or a custom one. A one(1) on the MSB of the first byte tell that the payload is a SER-Bus compliant message. Implementer can send custom message by setting the first byte to 0(0x00).
 
 ![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/(P).svg)
 
@@ -84,8 +85,7 @@ Les messages de flux sont destinés lorsque l'intégrité des données n'est pas
 
 ### Identification de la position du bus (BPI)
 
-The Bus Position Identification give controler a way to talk with a specific device while other remain unchanged. Bridge must support BPI because they never know what bus the will be part of. Each device can have up to 7 sub-device. sub-device 0 is reserved for control or when sub-device are not used. Device can get an adress of 3 way possible: Statically, Pseudo-Dynamicly and Dynamicly.
-![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
+L'identification de la position du bus donne au contrôleur un moyen de parler avec un appareil spécifique tandis que les autres restent inchangés. Bridge doit prendre en charge BPI car ils ne savent jamais de quel bus il fera partie. Chaque appareil peut avoir jusqu'à 7 sous-appareils. le sous-appareil 0 est réservé au contrôle ou lorsque les sous-appareils ne sont pas utilisés. L'appareil peut obtenir une adresse de 3 manières possibles : statiquement, pseudo-dynamiquement et dynamiquement.![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
 
 #### Adressage statique
 
