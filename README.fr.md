@@ -7,13 +7,13 @@
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
 <!-- The below code snippet is automatically added from Acronim.md -->
 ```md
-<b>SHER-Bus Stand for:</b>
+SHER-Bus Stand for:
 
-<b>S</b>ystemwide <b>H</b>ub for <b>E</b>fficient <b>R</b>outing <b>Bus</b> 
+Systemwide Hub for Efficient Routing Bus 
 
 and
 
-<b>S</b>HER-Bus <b>H</b>andles <b>E</b>xtensive <b>R</b>esource <b>B</b>ridging, <b>U</b>nifying <b>S</b>ystems
+SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
@@ -50,7 +50,7 @@ Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre e
 
 Il n'existe que 3 types d'appareils qui remplissent des fonctions différentes dans le réseau de bus.
 
-Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. Autrement dit, leur travail est d'être le bain de la communication. Ils se composent principalement de microcontrôleurs, d’ordinateurs embarqués (Raspberry pi) ou de FPGA.
+Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. En d’autres termes, leur travail consiste à être le bain de la communication. Ils se composent principalement de microcontrôleurs, d'ordinateurs embarqués (Raspberry pi) ou de FPGA.
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controler_example.svg)
 
@@ -62,7 +62,7 @@ En troisième lieu, il y a le pont d'extrémité dont le travail consiste à con
 
 ## Architecture des paquets
 
-L'architecture des paquets suit la même philosophie que celle de l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire et chaque jeu est étiqueté par une lettre (ex. : I M C A F D Q pour le CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée dans l'ensemble des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[IPB]qui est à son tour intégré dans un package de flux (S) qui est à son tour intégré dans un package de protocole (S). Nous avons une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus, nous pouvons supprimer la couche BPI et avoir un message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque AND sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais un pont I2S le fait. ).
+L'architecture des paquets suit la même philosophie que celle de l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire et chaque jeu est étiqueté par une lettre (ex. : I M C A F D Q pour le CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée dans l'ensemble des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[IPB]qui est à son tour intégré dans un package de flux (S) qui est à son tour intégré dans un package de protocole (S). Nous avons une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus, nous pouvons supprimer la couche BPI et avoir un message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque ET sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais un pont I2S le fait. ).
 
 ![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Protocol_stack.svg)
 
