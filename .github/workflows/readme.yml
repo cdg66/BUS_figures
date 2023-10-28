@@ -21,6 +21,8 @@ jobs:
       - run:
           |
           sed 's/ r Achronim.md//g' 
+          git config --global user.name "Remove Bot"
+          git config --global user.email ""
           git add *
           git commit -m "removing untranslated text"
           git push
