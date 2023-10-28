@@ -6,9 +6,6 @@
 
 vOlv3zg2es
 
-
-vOlv3zg2es 
-
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
 ## What is SHER-Bus?
