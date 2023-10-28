@@ -27,11 +27,18 @@ jobs:
      ## copy manualy the file into an other
       - run:
          |
-         echo "adding untranslated text"
+         git config user.name "GitHub Actions Bot"
+         git config user.email "<>
+
          sed -i $'s/vOlv3zg2es/{e cat     Achronim.md\n}' README.md
          sed -i $'s/vOlv3zg2es//g' README.md 
          sed -i $'s/vOlv3zg2es/{e cat     Achronim.md\n}' README.fr.md
          sed -i $'s/vOlv3zg2es//g' README.fr.md 
+         
+         git add -A
+         git commit -m "adding untranslated text"
+         git push
+         
         
           
 
