@@ -4,7 +4,7 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Achronim.md) -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./Achronim.md) -->
 
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
@@ -45,7 +45,7 @@ Il y a d’abord le contrôleur qui génère un paquet de données que d’autre
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controler_example.svg)
 
-En deuxième lieu, il y a le pont dont la tâche consiste à combler le fossé entre le nouveau bus et le protocole déjà existant. Ils peuvent avoir plusieurs bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[IPB]). Ils sont principalement constitués d'ASIC ou de FPGA. Bien qu'à l'époque ou en écrivant aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Le microcontrôleur peut également faire office de pont. Brige peut être intégré dans une conception déjà existante sous forme de matrice ou dans un boîtier multi-matrice. En réutilisant plusieurs fois la conception, cela contribue à réduire la complexité de la refonte et à accélérer la mise sur le marché. Les responsables de la mise en œuvre du pont doivent faire attention aux licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
+En deuxième lieu, il y a le pont dont la tâche consiste à combler le fossé entre le nouveau bus et le protocole déjà existant. Ils peuvent avoir plusieurs bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[IPB]). Ils sont principalement constitués d’ASIC ou de FPGA. Bien qu'à l'époque ou en écrivant aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Le microcontrôleur peut également faire office de pont. Brige peut être intégré dans une conception déjà existante sous forme de matrice ou dans un boîtier multi-matrice. En réutilisant plusieurs fois la conception, cela contribue à réduire la complexité de la refonte et à accélérer la mise sur le marché. Les responsables de la mise en œuvre du pont doivent faire attention aux licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
 
 ![MultiDiedesign](https://github.com/cdg66/SHER-BUS_figures/blob/main/Intergrated_bridge.svg)
 
@@ -69,7 +69,7 @@ La couche protocole est la seule couche obligatoire de la spécification. Il gè
 
 #### Control Messages (C)
 
-Control message are use to change how the bus or a device react. For example an implementer can perform a device reset. It is also used by the [IPB]layer for Dynamic Adressing.
+Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou un appareil réagit. Par exemple, un implémenteur peut effectuer une réinitialisation de l'appareil. Il est également utilisé par le[IPB]layer for Dynamic Adressing.
 
 #### Messages d'interruption (I)
 
@@ -85,7 +85,8 @@ Les messages de flux sont destinés lorsque l'intégrité des données n'est pas
 
 ### Identification de la position du bus (BPI)
 
-L'identification de la position du bus donne au contrôleur un moyen de parler avec un appareil spécifique tandis que les autres restent inchangés. Bridge doit prendre en charge BPI car ils ne savent jamais de quel bus il fera partie. Chaque appareil peut avoir jusqu'à 7 sous-appareils. le sous-appareil 0 est réservé au contrôle ou lorsque les sous-appareils ne sont pas utilisés. L'appareil peut obtenir une adresse de 3 manières possibles : statiquement, pseudo-dynamiquement et dynamiquement.![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
+The Bus Position Identification give controler a way to talk with a specific device while other remain unchanged. Bridge must support BPI because they never know what bus the will be part of. Each device can have up to 7 sub-device. sub-device 0 is reserved for control or when sub-device are not used. Device can get an adress of 3 way possible: Statically, Pseudo-Dynamicly and Dynamicly.
+![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
 
 #### Adressage statique
 
