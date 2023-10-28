@@ -7,7 +7,6 @@
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
 <!-- The below code snippet is automatically added from Acronim.md -->
 ```md
-<pre>
 <b>SHER-Bus Stand for:</b>
 
 <b>S</b>ystemwide <b>H</b>ub for <b>E</b>fficient <b>R</b>outing <b>Bus</b> 
@@ -15,7 +14,6 @@
 and
 
 <b>S</b>HER-Bus <b>H</b>andles <b>E</b>xtensive <b>R</b>esource <b>B</b>ridging, <b>U</b>nifying <b>S</b>ystems
-</pre>
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
@@ -84,17 +82,17 @@ Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou 
 
 #### Messages d'interruption (I)
 
-Les messages d'interruption sont conçus pour être aussi proches que possible d'une interruption informatique. Ils peuvent utiliser le[IPB] but are more meant for Bus Wise attention. For example An ADC can send a Interupt to say that fresh data is ready to be read.
+Les messages d'interruption sont conçus pour être aussi proches que possible d'une interruption informatique. Ils peuvent utiliser le[IPB]mais sont davantage destinés à l'attention de Bus Wise. Par exemple, un ADC peut envoyer une interruption pour indiquer que de nouvelles données sont prêtes à être lues.
 
 #### Messages Boomerang (B)
 
-Les messages Bomerang, comme leur nom l'indique, sont destinés à revenir à l'expéditeur. Dès réception d'un message (B), le récepteur l'utilise pour effectuer une action, puis renvoie le même message avec une modification en fonction de cette action. Les messages (B) constituent une exception car ils doivent prendre en charge les messages d'identification de position du bus, sinon tout le monde dans le bus renverrait le message. Le renvoi du même message garantit également qu'il a été reçu correctement et permet la désynchronisation de la transaction (les allers-retours peuvent se produire avec d'autres messages les séparant). Un exemple serait une lecture I2C sur le bus. Un contrôleur peut demander la lecture de l'adresse W adresse X i2c sur le bus Y I2C du pont Z. Le pont répondrait après avoir effectué la lecture qu'il avait reçu n octets de données de l'adresse W X i2c salve sur le bus Y I2C en renvoyant le même message mais en échangeant l'octet récepteur/transciver du[BPI]et ajouter les données lues.
+Les messages Bomerang, comme leur nom l'indique, sont destinés à revenir à l'expéditeur. Dès réception d'un message (B), le récepteur l'utilise pour effectuer une action, puis renvoie le même message avec une modification en fonction de cette action. Les messages (B) constituent une exception car ils doivent prendre en charge les messages d'identification de position du bus, sinon tout le monde dans le bus renverrait le message. Le renvoi du même message garantit également qu'il a été reçu correctement et permet la désynchronisation de la transaction (les allers-retours peuvent se produire avec d'autres messages les séparant). Un exemple serait une lecture I2C sur le bus. Un contrôleur peut demander la lecture de l'adresse W adresse X i2c sur le bus Y I2C du pont Z. Le pont répondrait après avoir effectué la lecture qu'il avait reçu n octets de données de l'adresse W X i2c salve sur le bus Y I2C en renvoyant le même message mais en échangeant l'octet récepteur/transciver du[IPB]et ajouter les données lues.
 
-#### Stream Messages (S)
+#### Flux de messages (S)
 
 Les messages de flux sont destinés lorsque l'intégrité des données n'est pas importante mais qu'un flux constant de données l'est. Les messages de flux sont destinés à un flux audio par exemple. Ce n'est pas mal si 1 ou 2 paquets sont perdus, il vaut mieux avoir un flux constant de paquets. Les messages de flux sont meilleurs s'ils se trouvent sur un bus séparé, car ils ont la priorité la plus basse.
 
-### Bus Position Identification (BPI)
+### Identification de la position du bus (BPI)
 
 L'identification de la position du bus donne au contrôleur un moyen de parler avec un appareil spécifique tandis que les autres restent inchangés. Bridge doit prendre en charge BPI car ils ne savent jamais de quel bus il fera partie. Chaque appareil peut avoir jusqu'à 7 sous-appareils. le sous-appareil 0 est réservé au contrôle ou lorsque les sous-appareils ne sont pas utilisés. L'appareil peut obtenir une adresse de 3 manières possibles : statiquement, pseudo-dynamiquement et dynamiquement.![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
 
@@ -104,7 +102,7 @@ Chaque appareil sur le bus a une adresse prédéfinie qui ne change pas. Il est 
 
 #### Pseudo-Dynamic Addressing
 
-Each device get his adress with using an external way. For eample in a backplane each slot is labeled electronicaly(gpio or i2c eeprom) with an unique adress. SHER-Bus device read that adress upon power up and use it for communication. To be documented. 
+Chaque appareil obtient son adresse par un moyen externe. Par exemple, dans un fond de panier, chaque emplacement est étiqueté électroniquement (gpio ou eeprom i2c) avec une adresse unique. Le périphérique SHER-Bus lit cette adresse lors de la mise sous tension et l'utilise pour la communication. A documenter.
 
 #### Dynamic Addressing
 
