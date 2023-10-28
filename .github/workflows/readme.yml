@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - run:
           |
 
@@ -18,9 +21,6 @@ jobs:
           git add *
           git commit -m "removing untranslated text"
           git push
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
