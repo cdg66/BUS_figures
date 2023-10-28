@@ -5,6 +5,16 @@
 
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+<!-- The below code snippet is automatically added from Acronim.md -->
+```md
+**SHER-Bus Stand for:**
+
+**S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
+
+and
+
+**S**HER-Bus **H**andles **E**xtensive **R**esource **B**ridging, **U**nifying **S**ystems
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
  
 
