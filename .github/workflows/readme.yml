@@ -38,7 +38,7 @@ jobs:
 
               # Optional branch name where commit should be pushed to.
               # Defaults to the current branch.
-              branch: GITHUB_HEAD_REF
+              branch: $GITHUB_HEAD_REF
               # Optional output file paths, defaults to '[./README.md]'.
               output_file_paths: '[./README.md]'
           
