@@ -4,8 +4,7 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./Achronim.md) -->
-
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./Acronim.md) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
