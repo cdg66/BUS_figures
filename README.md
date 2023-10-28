@@ -4,10 +4,14 @@
 > Content is not fixed and suject to change without notice!
 
 
-vOlv3zg2es
+**SHER-Bus Stand for:**
 
+**S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
 
-vOlv3zg2es 
+and
+
+**S**HER-Bus **H**andles **E**xtensive **R**esource **B**ridging, **U**nifying **S**ystems
+ 
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
