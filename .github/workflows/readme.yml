@@ -25,11 +25,11 @@ jobs:
           LANG: fr
 
      ## copy manualy the file into an other
-     - run:
-        |
-        echo "adding untranslated text"
-        sed $'/ACH/{e cat     Achronim.md\n}' README.md
-        sed $'/ACH/{e cat     Achronim.md\n}' README.fr.md
+      - run:
+         |
+         echo "adding untranslated text"
+         sed $'/ACH/{e cat     Achronim.md\n}' README.md
+         sed $'/ACH/{e cat     Achronim.md\n}' README.fr.md
         
           
 
