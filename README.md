@@ -4,13 +4,9 @@
 > Content is not fixed and suject to change without notice!
 
 
-**SHER-Bus Stand for:**
 
-**S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
-
-and
-
-**S**HER-Bus **H**andles **E**xtensive **R**esource **B**ridging, **U**nifying **S**ystems
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Achronim.md) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
  
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)

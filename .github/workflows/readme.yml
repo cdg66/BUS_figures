@@ -23,18 +23,23 @@ jobs:
         uses: dephraiim/translate-readme@main
         with:
           LANG: fr
-
-     ## copy manualy the file into an other
-      - run:
-         |
-         echo "adding untranslated text"
-         sed -i $'/vOlv3zg2es/{e cat     Achronim.md\n}' README.md
-         sed -i $'s/vOlv3zg2es//g' README.md 
-         sed -i $'/vOlv3zg2es/{e cat     Achronim.md\n}' README.fr.md
-         sed -i $'s/vOlv3zg2es//g' README.fr.md 
-         git add *
-         git commit -m "Adding untranslated text"
-         git push
-        
+      - name: Markdown autodocs
+        uses: dineshsonachalam/markdown-autodocs@v1.0.7
+        with:
+              # Optional, defaults to author of the commit that triggered the run
+              commit_author: Author <actions@github.com>
           
+              # Optional, defaults to "actions@github.com"
+              commit_user_email: actions@github.com
+          
+              # Optional, but recommended
+              # Defaults to "Apply automatic changes"
+              commit_message: Apply automatic changes
+              # Optional output file paths, defaults to '[./README.md]'.
+              output_file_paths: '[./README.md]'
+          
+              # Categories to automatically sync or transform its contents in the markdown files.
+              # Defaults to '[code-block,json-to-html-table,workflow-artifact-table]'
+              categories: '[code-block,json-to-html-table,workflow-artifact-table]'
+
 

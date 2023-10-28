@@ -4,14 +4,9 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-**SHER-Bus Stand for:**
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Achronim.md) -->
 
-**S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
-
-and
-
-**S**HER-Bus **H**andles **E**xtensive **R**esource **B**ridging, **U**nifying **S**ystems
-
+<!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
@@ -74,7 +69,7 @@ La couche protocole est la seule couche obligatoire de la spécification. Il gè
 
 #### Control Messages (C)
 
-Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou un appareil réagit. Par exemple, un implémenteur peut effectuer une réinitialisation de l'appareil. Il est également utilisé par le[IPB]layer for Dynamic Adressing.
+Control message are use to change how the bus or a device react. For example an implementer can perform a device reset. It is also used by the [IPB]layer for Dynamic Adressing.
 
 #### Messages d'interruption (I)
 
