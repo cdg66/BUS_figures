@@ -1,12 +1,14 @@
 # SHER-Bus Pre-specifcation
 > **Warning**
+>
 > Content is not fixed and suject to change without notice!
 
-```Achronim.md
 
-```
+**SHER-Bus Stand for:**
 
- 
+
+
+vOlv3zg2es [comment]: <> (string so sed replace it but translate dont)
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 

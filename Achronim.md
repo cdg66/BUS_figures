@@ -1,4 +1,3 @@
-**SHER-Bus Stand for:
 
 **S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
 
