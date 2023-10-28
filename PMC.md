@@ -96,7 +96,7 @@ Le middleware est la partie logicielle qui permet la gestions des messages envoy
 
 #### 3.2.6 C/C++ USB2SHER-Bus end-bridge (RP2040)
 
-Vu que le RP2040 possède un port usb device il serait intéressant de faire un end bridge 
+Vu que le RP2040 possède un port usb device il serait intéressant de faire un end bridge.
 
 ## 4. Session 8 - Été 2025
 
