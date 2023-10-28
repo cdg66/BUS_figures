@@ -13,7 +13,7 @@ vOlv3zg2es
 Il s'agit d'une conception de bus série permettant de regrouper de nombreux bus série à basse vitesse trouvés dans l'électronique moderne en une ou plusieurs paires de différentiels à grande vitesse.
 Des exemples de bus série basse vitesse sont SPI, I2C, CAN, PWM, PCM, etc. Fini le jour où vous réalisez que vous n'avez pas assez de bus i2c ou UARTS.
 
-Ce bus peut également prendre en charge des usages plus généraux comme l'interface homme-machine (clavier, clavier, contrôleur de jeu, joysticks), l'audio (I2S, SPDIF), la vidéo basse résolution (oleds monochromes, spi tft lcd), le contrôle moteur (pas à pas) , Entrée-sortie à usage général (GPIO), gestion de la batterie (SOC, DOD, SOH, série, parallèle, courant de charge/décharge, tension, températures), etc.
+ This bus can also support more general usage like, humain-machine interface (keyboard,keypad,game controller,joysticks), audio (I2S, SPDIF), low-resolution video (monochome oleds,spi tft lcd), motor control (stepper), General Purpose Input Output (GPIO), Battery managing (SOC, DOD, SOH, Series, Parallel, Charge/Discarge Current, Voltage, Temperatures)  etc.
 
 SHER-Bus est également idéal pour la communication à usage général (comme UART, JASON, protobuf, modbus, etc.) entre les contrôleurs.
 
@@ -39,7 +39,7 @@ Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre e
 
 Il n'existe que 3 types d'appareils qui remplissent des fonctions différentes dans le réseau de bus.
 
-Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. Autrement dit, leur travail est d'être le bain de la communication. Ils se composent principalement de microcontrôleurs, d’ordinateurs embarqués (Raspberry pi) ou de FPGA.
+Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. En d’autres termes, leur travail consiste à être le bain de la communication. Ils se composent principalement de microcontrôleurs, d'ordinateurs embarqués (Raspberry pi) ou de FPGA.
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controler_example.svg)
 
@@ -51,7 +51,7 @@ En troisième lieu, il y a le pont d'extrémité dont le travail consiste à con
 
 ## Architecture des paquets
 
-L'architecture des paquets suit la même philosophie que celle de l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire et chaque jeu est étiqueté par une lettre (ex. : I M C A F D Q pour le CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée dans l'ensemble des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[IPB]qui est à son tour intégré dans un package de flux (S) qui est à son tour intégré dans un package de protocole (S). Nous avons une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus, nous pouvons supprimer la couche BPI et avoir un message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque AND sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais un pont I2S le fait. ).
+L'architecture des paquets suit la même philosophie que celle de l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire et chaque jeu est étiqueté par une lettre (ex. : I M C A F D Q pour le CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée dans l'ensemble des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[IPB]qui est à son tour intégré dans un package de flux (S) qui est à son tour intégré dans un package de protocole (S). Nous avons une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus, nous pouvons supprimer la couche BPI et avoir un message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque ET sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais un pont I2S le fait. ).
 
 ![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Protocol_stack.svg)
 
@@ -101,6 +101,6 @@ Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide du messag
 
 > **Avertissement**A écrire
 >
-> ### Exemple de transaction
+> ### Transaction Example
 >
 > ![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/example_message.svg)
