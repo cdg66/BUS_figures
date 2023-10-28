@@ -16,8 +16,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - run:
           |
-
           sed 's/ r Achronim.md//g' 
+          git config --global user.email ""
+          git config --global user.name "Commit Bot"
           git add *
           git commit -m "removing untranslated text"
           git push
