@@ -1,7 +1,9 @@
-**SHER-Bus Stand for:**
+<pre>
+<b>SHER-Bus Stand for:</b>
 
-**S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
+<b>S</b>ystemwide <b>H</b>ub for <b>E</b>fficient <b>R</b>outing <b>Bus</b> 
 
 and
 
-**S**HER-Bus **H**andles **E**xtensive **R**esource **B**ridging, **U**nifying **S**ystems
+<b>S</b>HER-Bus <b>H</b>andles <b>E</b>xtensive <b>R</b>esource <b>B</b>ridging, <b>U</b>nifying <b>S</b>ystems
+</pre>
