@@ -60,25 +60,43 @@ Lors du stage T4 la spécification sera publiée et la communautée open source 
 
 ## 3. Session 7 - Hiver 2024
 
+Vu que c'est un projet elec-info il y a évidememt deux partie au projet. Chaque partie peux-etre décomposée en sous partie suivanntes. Chaque sous partie peux ou pas être dépendantes des précédente.
+
 ### 3.1 Partie Matérielle
 
 #### 3.1.1 Banc de Test
 
+Il s'agit du Pcb qui vas permettre l'interconnection des différent appareil sur le bus. il permetta aussi le Débugage/programmation simultanée de plusieur MCU.
+
 #### 3.1.2 Carte controleur/Bridge
+
+Carte pouvant se connecter sur le banc de test. Elle contient un controlleur(RP2040 mcu) et un bridge(ICE40 fpga) soit les appareil minimal pour faire un bus. Cette carte pourras être ensuite distribuée pour que de futur implémenteur puisse aprivoiser le nouveau bus.
 
 ### 3.2 Partie Logicielle
 
 #### 3.2.1 VHDL PHY (Xilinx/Lattice)
 
+Le PHY ou plus communément le  Milieux Phisique gère la comunication au niveau fillaire. Il permet la sérialisation et déserialisation des message. 
+
 #### 3.2.2 VHDL AXI2SHER-Bus (Xilinx)
+
+Avec une carte Zybo concevoir un Périférique AXI pour CPU(arm ou microblaze). Le PHY est réutilisée avec l'ajout des masques et interuption
 
 #### 3.2.3 VHDL Bridge (Lattice)
 
+Pont entre protocol basse vitesse (i2c,spi,i2c, etc). 
+
 #### 3.2.4 PIOasm Contrôleur (RP2040)
+
+milieux phisique émulée par les pio.
 
 #### 3.2.5 C/C++ SHER-Bus middleware (RP2040/Xilinx)
 
+Le middleware est la partie logicielle qui permet la gestions des messages envoyée et recus. Elle devrais être commune autant pour le RP2040 que pour le FPGA xilinx. seul le plus bas niveau doit être adaptée a cpu.
+
 #### 3.2.6 C/C++ USB2SHER-Bus end-bridge (RP2040)
+
+Vu que le RP2040 possède un port usb device il serait intéressant de faire un end bridge 
 
 ## 4. Session 8 - Été 2025
 
