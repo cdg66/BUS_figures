@@ -4,8 +4,19 @@
 > Content is not fixed and suject to change without notice!
 
 
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+<!-- The below code snippet is automatically added from Acronim.md -->
+```md
+<pre>
+<b>SHER-Bus Stand for:</b>
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./Achronim.md) -->
+<b>S</b>ystemwide <b>H</b>ub for <b>E</b>fficient <b>R</b>outing <b>Bus</b> 
+
+and
+
+<b>S</b>HER-Bus <b>H</b>andles <b>E</b>xtensive <b>R</b>esource <b>B</b>ridging, <b>U</b>nifying <b>S</b>ystems
+</pre>
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
  
 
