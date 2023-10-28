@@ -4,9 +4,10 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-**Support de bus SHER pour :**
 
-vOlv3zg2es[comment]&#x3A; &lt;> (chaîne donc sed la remplace mais ne traduit pas)
+
+vOlv3zg2es
+
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
