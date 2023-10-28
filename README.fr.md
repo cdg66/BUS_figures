@@ -5,19 +5,18 @@
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
-
 <!-- The below code snippet is automatically added from Acronim.md -->
-
 ```md
-**SHER-Bus Stand for:**
+<pre>
+<b>SHER-Bus Stand for:</b>
 
-**S**ystemwide **H**ub for **E**fficient **R**outing **Bus** 
+<b>S</b>ystemwide <b>H</b>ub for <b>E</b>fficient <b>R</b>outing <b>Bus</b> 
 
 and
 
-**S**HER-Bus **H**andles **E**xtensive **R**esource **B**ridging, **U**nifying **S**ystems
+<b>S</b>HER-Bus <b>H</b>andles <b>E</b>xtensive <b>R</b>esource <b>B</b>ridging, <b>U</b>nifying <b>S</b>ystems
+</pre>
 ```
-
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
