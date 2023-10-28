@@ -6,7 +6,8 @@
 
 
 
-<!---vOlv3zg2es--->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Achronim.md) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
  
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
