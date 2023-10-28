@@ -4,12 +4,10 @@
 > Content is not fixed and suject to change without notice!
 
 
-**SHER-Bus Stand for:**
+vOlv3zg2es
 
 
 vOlv3zg2es 
-
-[comment]: <> (string so sed replace it but translate dont)
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
