@@ -13,7 +13,8 @@ jobs:
     steps:
       - run:
           |
-          sed -i $'s/{e cat     Achronim.md\n}//g' README.md
+
+          sed 's/ r Achronim.md//g' 
           git add *
           git commit -m "removing untranslated text"
           git push
