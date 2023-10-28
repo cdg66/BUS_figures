@@ -4,13 +4,10 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-**Support de bus SHER pour :**
 
-**S**à l'échelle du système**H**ub pour**ET**fficient**R.**sortie**Bus**
 
-et
-
-**S**HER-Bus**H**bougies**ET**xtensive **R.**ressource**B**faîtage,**DANS**nifiant**S**systèmes
+<!---vOlv3zg2es--->
+ 
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 
