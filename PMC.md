@@ -84,7 +84,7 @@ Avec une carte Zybo concevoir un Périférique AXI pour CPU(arm ou microblaze). 
 
 #### 3.2.3 VHDL Bridge (Lattice)
 
-Pont entre protocol basse vitesse (i2c,spi,i2c, etc). 
+Pont entre protocol basse vitesse (i2c,spi,i2c, etc). ce pont va etre utilise pour la Carte controleur/Bridge. 
 
 #### 3.2.4 PIOasm Contrôleur (RP2040)
 
