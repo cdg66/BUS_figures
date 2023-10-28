@@ -29,9 +29,9 @@ jobs:
          |
          echo "adding untranslated text"
          sed -i $'/vOlv3zg2es/{e cat     Achronim.md\n}' README.md
-         sed -i $'s/vOlv3zg2es//g' README.md 
+         #sed -i $'s/vOlv3zg2es//g' README.md 
          sed -i $'/vOlv3zg2es/{e cat     Achronim.md\n}' README.fr.md
-         sed -i $'s/vOlv3zg2es//g' README.fr.md 
+         #sed -i $'s/vOlv3zg2es//g' README.fr.md 
          git add *
          git commit -m "Adding untranslated text"
          git push
