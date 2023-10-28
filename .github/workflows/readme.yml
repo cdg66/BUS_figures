@@ -14,24 +14,21 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-      - run:
-          |
-          sed 's/ r Achronim.md//g' 
-          git config --global user.name "Commit Bot"
-          git config --global user.email ""
-          git add *
-          git commit -m "removing untranslated text"
-          git push
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - run:
+          |
+          sed 's/ r Achronim.md//g' 
+          git add *
+          git commit -m "removing untranslated text"
+          git push
       # ISO Langusge Codes: https://cloud.google.com/translate/docs/languages  
       - name: Adding README - French
         uses: dephraiim/translate-readme@main
         with:
           LANG: fr
-
      ## copy manualy the file into an other
       - run:
          |
