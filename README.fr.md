@@ -4,9 +4,9 @@
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
-\*\*Support de bus SHER pour :
+**Support de bus SHER pour :**
 
-MAIS
+vOlv3zg2es [comment]: <> (string so sed replace it but translate dont)
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
 

@@ -28,8 +28,8 @@ jobs:
       - run:
          |
          echo "adding untranslated text"
-         sed $'/ACH/{e cat     Achronim.md\n}' README.md
-         sed $'/ACH/{e cat     Achronim.md\n}' README.fr.md
+         sed $'/vOlv3zg2es/{e cat     Achronim.md\n}' README.md
+         sed $'/vOlv3zg2es/{e cat     Achronim.md\n}' README.fr.md
         
           
 
