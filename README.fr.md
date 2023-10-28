@@ -5,19 +5,16 @@
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
-
 <!-- The below code snippet is automatically added from Acronim.md -->
-
 ```md
-<b>SHER-Bus Stand for:</b>
+SHER-Bus Stand for:
 
-<b>S</b>ystemwide <b>H</b>ub for <b>E</b>fficient <b>R</b>outing <b>Bus</b> 
+Systemwide Hub for Efficient Routing Bus 
 
 and
 
-<b>S</b>HER-Bus <b>H</b>andles <b>E</b>xtensive <b>R</b>esource <b>B</b>ridging, <b>U</b>nifying <b>S</b>ystems
+SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
-
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
