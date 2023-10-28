@@ -13,7 +13,7 @@ vOlv3zg2es
 Il s'agit d'une conception de bus série permettant de regrouper de nombreux bus série à basse vitesse trouvés dans l'électronique moderne en une ou plusieurs paires de différentiels à grande vitesse.
 Des exemples de bus série basse vitesse sont SPI, I2C, CAN, PWM, PCM, etc. Fini le jour où vous réalisez que vous n'avez pas assez de bus i2c ou UARTS.
 
- This bus can also support more general usage like, humain-machine interface (keyboard,keypad,game controller,joysticks), audio (I2S, SPDIF), low-resolution video (monochome oleds,spi tft lcd), motor control (stepper), General Purpose Input Output (GPIO), Battery managing (SOC, DOD, SOH, Series, Parallel, Charge/Discarge Current, Voltage, Temperatures)  etc.
+Ce bus peut également prendre en charge des usages plus généraux comme l'interface homme-machine (clavier, clavier, contrôleur de jeu, joysticks), l'audio (I2S, SPDIF), la vidéo basse résolution (oleds monochromes, spi tft lcd), le contrôle moteur (pas à pas) , Entrée-sortie à usage général (GPIO), gestion de la batterie (SOC, DOD, SOH, série, parallèle, courant de charge/décharge, tension, températures), etc.
 
 SHER-Bus est également idéal pour la communication à usage général (comme UART, JASON, protobuf, modbus, etc.) entre les contrôleurs.
 
@@ -101,6 +101,6 @@ Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide du messag
 
 > **Avertissement**A écrire
 >
-> ### Transaction Example
+> ### Exemple de transaction
 >
 > ![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/example_message.svg)
