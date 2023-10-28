@@ -1,7 +1,7 @@
-<b>SHER-Bus Stand for:</b>
+SHER-Bus Stand for:
 
-<b>S</b>ystemwide <b>H</b>ub for <b>E</b>fficient <b>R</b>outing <b>Bus</b> 
+Systemwide Hub for Efficient Routing Bus 
 
 and
 
-<b>S</b>HER-Bus <b>H</b>andles <b>E</b>xtensive <b>R</b>esource <b>B</b>ridging, <b>U</b>nifying <b>S</b>ystems
+SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
