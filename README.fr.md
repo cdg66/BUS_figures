@@ -5,9 +5,7 @@
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
-
 <!-- The below code snippet is automatically added from Acronim.md -->
-
 ```md
 SHER-Bus Stand for:
 
@@ -17,7 +15,6 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
-
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
