@@ -59,7 +59,7 @@ jobs:
           build_html: false
       - uses: actions/upload-artifact@v3
         with:
-          name: ./
+          name: pdf
           path: PDF
 
 
