@@ -50,18 +50,5 @@ jobs:
               # Categories to automatically sync or transform its contents in the markdown files.
               # Defaults to '[code-block,json-to-html-table,workflow-artifact-table]'
               categories: '[code-block]'
-      - name: Build PDF
-        uses: baileyjm02/markdown-to-pdf@v1
-        with:
-                  input_dir:  ./
-                  output_dir: pdfs
-                  images_dir: ./
-                  # for example <img src="./images/file-name.png">
-                  image_import: ./Figures
-                  # Default is true, can set to false to only get PDF files
-                  build_html: false
-      - uses: actions/upload-artifact@v3
-        with:
-          name: docs
-          path: pdfs
+     
         
