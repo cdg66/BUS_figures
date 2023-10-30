@@ -5,7 +5,9 @@
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -15,6 +17,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
@@ -50,7 +53,7 @@ Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre e
 
 Il n'existe que 3 types d'appareils qui remplissent des fonctions différentes dans le réseau de bus.
 
-Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. Autrement dit, leur travail est d'être le bain de la communication. Ils se composent principalement de microcontrôleurs, d’ordinateurs embarqués (Raspberry pi) ou de FPGA.
+Il y a d’abord le contrôleur qui génère un paquet de données que d’autres peuvent analyser. Ils donnent au bus sa fonction. par exemple, le contrôleur peut donner l'ordre à un pont de lire un capteur de température i2c. Le contrôleur interprète ensuite ces données, puis ajuste un DAC spi pour émettre une valeur pour le contrôle d'un ventilateur. Ils peuvent également donner des commandes à un autre contrôleur sur le même bus. En d’autres termes, leur travail consiste à être le bain de la communication. Ils se composent principalement de microcontrôleurs, d'ordinateurs embarqués (Raspberry pi) ou de FPGA.
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Controler_example.svg)
 
@@ -68,7 +71,7 @@ L'architecture des paquets suit la même philosophie que celle de l'architecture
 
 ### Couche de protocole (P)
 
-La couche protocole est la seule couche obligatoire de la spécification. Il gère le minimum pour être une transaction valide. L'implémenteur utilise cette couche pour envoyer un message de très bas niveau comme une communication point à point de type UART, puisque l'adressage est géré à un niveau supérieur, seule une configuration de bus point à point ou multipoint est possible en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas d'une pile lourde pour quelque chose de simple. Cela accorde également à l'implémenteur la liberté de créer une pile de protocoles personnalisée pour les applications qui ne sont pas couvertes par la pile existante. (ex. : SAE J1939 et CanOPEN sont tous deux des piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essayant de le faire. le même mais gratuit avec une pile commune qui aide l'implémenteur de pont et l'implémenteur de bus à avoir un terrain d'entente avec lequel travailler). le premier octet sert à indiquer s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. L'implémenteur peut envoyer un message personnalisé en définissant le premier octet sur 0 (0x00).
+La couche protocole est la seule couche obligatoire de la spécification. Il gère le minimum pour être une transaction valide. L'implémenteur utilise cette couche pour envoyer un message de très bas niveau comme une communication point à point de type UART, puisque l'adressage est géré à un niveau supérieur, seule la configuration de bus point à point ou multipoint est possible en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas d'une pile lourde pour quelque chose de simple. Cela accorde également à l'implémenteur la liberté de créer une pile de protocoles personnalisée pour les applications qui ne sont pas couvertes par la pile existante. (ex. : SAE J1939 et CanOPEN sont tous deux des piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essayant de le faire. le même mais gratuit avec une pile commune qui aide l'implémenteur de pont et l'implémenteur de bus à avoir un terrain d'entente avec lequel travailler). le premier octet sert à indiquer s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. L'implémenteur peut envoyer un message personnalisé en définissant le premier octet sur 0 (0x00).
 
 ![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/(P).svg)
 
@@ -88,7 +91,7 @@ Les messages d'interruption sont conçus pour être aussi proches que possible d
 
 Les messages Bomerang, comme leur nom l'indique, sont destinés à revenir à l'expéditeur. Dès réception d'un message (B), le récepteur l'utilise pour effectuer une action, puis renvoie le même message avec une modification en fonction de cette action. Les messages (B) constituent une exception car ils doivent prendre en charge les messages d'identification de position du bus, sinon tout le monde dans le bus renverrait le message. Le renvoi du même message garantit également qu'il a été reçu correctement et permet la désynchronisation de la transaction (les allers-retours peuvent se produire avec d'autres messages les séparant). Un exemple serait une lecture I2C sur le bus. Un contrôleur peut demander la lecture de l'adresse W adresse X i2c sur le bus Y I2C du pont Z. Le pont répondrait après avoir effectué la lecture qu'il avait reçu n octets de données de l'adresse W X i2c salve sur le bus Y I2C en renvoyant le même message mais en échangeant l'octet récepteur/transciver du[IPB]et ajouter les données lues.
 
-#### Flux de messages (S)
+#### Stream Messages (S)
 
 Les messages de flux sont destinés lorsque l'intégrité des données n'est pas importante mais qu'un flux constant de données l'est. Les messages de flux sont destinés à un flux audio par exemple. Ce n'est pas mal si 1 ou 2 paquets sont perdus, il vaut mieux avoir un flux constant de paquets. Les messages de flux sont meilleurs s'ils se trouvent sur un bus séparé, car ils ont la priorité la plus basse.
 
