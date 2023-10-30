@@ -6,8 +6,8 @@ on:
     branches:
       - main
     paths:
-      - './**.md'
-      - './Figures/**'
+      - '**.md'
+      - 'Figures/**'
 permissions:
   contents: write
 jobs:
