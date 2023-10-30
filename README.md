@@ -18,7 +18,7 @@ SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 <!-- MARKDOWN-AUTO-DOCS:END -->
  
 
-![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/BUS_layout.svg)
+![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
 
 ## What is SHER-Bus?
 
@@ -35,7 +35,7 @@ Sherbus is  born of the frustration of working with the many, bloated, slow or p
 
 Another point as why we need a protocol like SHER-Bus is that as much RISC-V helped open the CPU market to lisence free IP for CPU, many System on chip require the use of proritary IP for its connectivity. One goal of SHER-Bus is that one day a 100% free and open source SOC would hit the market. With the help of SHER-Bus and many more project like this, the open source community can achive this objective.
 
-![FreeSOC](https://github.com/cdg66/SHER-BUS_figures/blob/main/SOC.svg)
+![FreeSOC](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/SOC.svg)
 
 ## Bus design
 
@@ -49,17 +49,17 @@ The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipo
 
 ## Bus Devices
 
-![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controller_Bridge.svg)
+![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Controller_Bridge.svg)
 
 There is only 3 type of device that serve different function in the bus network. 
 
 First there is the controller that generate data packet for other to parse. They give the bus his function. for instance, the controler can give command to a bridge for him to read an i2c temperature sensor. The controller then interpret that data and then adjusting an spi DAC to output a value for the control of a Fan. They can also give command to other controller on the same bus. So in other word their job is to be the bain of the communication. They consist of mostly of Microcontroller, Embedded computer(Raspberry pi) or FPGA.
 
-![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Controler_example.svg)
+![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Controler_example.svg)
 
 In second there is the bridge which is job is to close the gap between the new bus and the already existing protocol. They can have mutitude of serial bus(up to 6 and 1 general control channel using [BPI]). They consist of mostly ASIC  or FPGA. Altough at the time or writing no ASIC or FPGA code as been manufactured/written. Micrcocontroler can also act as bridge. Brige can be integrated into already existing design in die or in multi-die package. Folowing the design once reuse many, it help reduce redesign complexity and speeding up time to market. Bridge implementer need to be careful about licencing of existing bus as some are not free to implement.
 
-![MultiDiedesign](https://github.com/cdg66/SHER-BUS_figures/blob/main/Intergrated_bridge.svg)
+![MultiDiedesign](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Intergrated_bridge.svg)
 
 In third, There is the End bridge which job is to connect multiple SHER-Bus togehther or other HIGH-SPEED bus (like USB, SDIO or Ethernet). They terminate the bus(where the temination resistor are) that's why they are a limit of 2 that can be connected on the bus. They are complex and not mandatory.
 
@@ -67,17 +67,17 @@ In third, There is the End bridge which job is to connect multiple SHER-Bus toge
 
 The packet architecture follow the same philosopy taken by the RISC-V cpu achitecture. Only one set of instruction is mandatory and each set is labeled by a letter.(ex.: I M C A F D Q for risc-V CPU) or a word/achronim (ex.: Zicsr). What is different because of the nature of communication is that each layer is embeded into the payolad of layers under it. For example a Audio packet (A) is embeded into a Bus Protocol Identification [BPI] which is at his turn embeded into a stream package (S) which is at his turn embeded into a protocol package (S). Whe have structure like P(S(BPI(A))), but if that audio message is adressed to everyone on the bus we can remove the BPI layer and have message structured like this : P(S(A)). This greatly increase the flexibility of the bus. A reciver can perform and AND wise mask to the whole message to see if the message is of interest to him  and discard those who aren't (ex.: an I2C brdge dont care about an audio(A) package but an I2S bridge do). 
 
-![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Protocol_stack.svg)
+![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Protocol_stack.svg)
 
 ### Protocol layer (P)
 
 The protocol layer is the only mandatory layer of the specification. It handle the minimum to be a valid transaction. Implementer use this layer to send very low level message like a point to point UART-like communication, since adressing is handeled in higher level only point to point or multidrop bus configuration is possible with using only this level. This is a feature because in many aplication you wouldn't want a heavy stack for something simple. This also grant implementer the freeddom to create custom protocol stack for application that arent covered by the existing stack.(ex.: SAE J1939 and CanOPEN are both stack that are built upon the unrestricitve nature of the CAN protocol, SHER-Bus trying to do the same but free with having a common stack help bridge implemter and bus implementer have a common ground to work with). the first byte is to tell if its a stadard packet or a custom one. A one(1) on the MSB of the first byte tell that the payload is a SER-Bus compliant message. Implementer can send custom message by setting the first byte to 0(0x00).
 
-![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/(P).svg)
+![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/(P).svg)
 
 ### Network layer
 
-![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/(CIBS).svg)
+![Device_Types](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/(CIBS).svg)
 
 #### Contol Messages (C)
 
@@ -98,7 +98,7 @@ Stream message are for when data integrity is not important but a constant flow 
 ### Bus Position Identification (BPI)
 
 The Bus Position Identification give controler a way to talk with a specific device while other remain unchanged. Bridge must support BPI because they never know what bus the will be part of. Each device can have up to 7 sub-device. sub-device 0 is reserved for control or when sub-device are not used. Device can get an adress of 3 way possible: Statically, Pseudo-Dynamicly and Dynamicly.
-![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/(BPI).svg)
+![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/(BPI).svg)
 
 #### Static Adressing
 
@@ -116,6 +116,6 @@ Each device get his adress asking the SHER-Bus using Control(C) message. To be d
 > **Warning**
 > To be written
 ### Transaction Example
-![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/example_message.svg)
+![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/example_message.svg)
 
 
