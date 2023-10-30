@@ -26,7 +26,9 @@ jobs:
             image_import: ./Figures
             # Default is true, can set to false to only get PDF files
             build_html: false
-      - uses: actions/upload-artifact@v3
-        with:
-            name: pdf
-            path: PDF
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+      #- uses: actions/upload-artifact@v3
+      #  with:
+      #      name: pdf
+      #      path: PDF
