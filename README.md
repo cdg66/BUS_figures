@@ -125,6 +125,6 @@ The high level message are function that the bus can take. From the transport le
 
 ![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/example_message.svg)
 
-In those example we can see two different protocol that can share the same bus first we can see a COntroller try to read byte off a i2c slave. In the second we can see a CAN packet. On can its interesting than CAN message are sent using only the P layer. This show the SHER-Bus flexibility at handleling different aplication. SHER-Bus can use legacy adressing method instead of its BPI. 
+In those example we can see two different protocol that can share the same bus. Firstm, we can see a controller try to read bytes off a i2c slave. In the second we can see a CAN packet. Its interesting than CAN message are sent using only the P layer. This show the SHER-Bus flexibility at handleling different aplication. SHER-Bus can use legacy adressing method instead of it's BPI. This also show the power of having a mask on the whole packet instead of a specific region. The adressing can change place or length in the packet but as long as the sender and reciver agree to it. The other on the bus simply ignore the message.
 
 
