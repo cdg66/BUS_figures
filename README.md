@@ -115,7 +115,16 @@ Each device get his adress asking the SHER-Bus using Control(C) message. To be d
 ### High level Messages
 > **Warning**
 > To be written
+
+The high level message are function that the bus can take. From the transport legacy protocol to a function based ccommunication (Battery management, Data logging, Video, Audio ) SHER-Bus can do it. Each application is defined by a Aplication code that is given by the BUS community.(TO BE Deterined)
+
+![Application](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Application.svg)
+
+
 ### Transaction Example
+
 ![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/example_message.svg)
+
+In those example we can see two different protocol that can share the same bus. Firstm, we can see a controller try to read bytes off a i2c slave. In the second we can see a CAN packet. Its interesting than CAN message are sent using only the P layer. This show the SHER-Bus flexibility at handleling different aplication. SHER-Bus can use legacy adressing method instead of it's BPI. This also show the power of having a mask on the whole packet instead of a specific region. The adressing can change place or length in the packet but as long as the sender and reciver agree to it. The other on the bus simply ignore the message.
 
 
