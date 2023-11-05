@@ -5,7 +5,9 @@
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -15,6 +17,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
@@ -24,7 +27,7 @@ SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 Il s'agit d'une conception de bus série permettant de regrouper de nombreux bus série à basse vitesse trouvés dans l'électronique moderne en une ou plusieurs paires de différentiels à grande vitesse.
 Des exemples de bus série basse vitesse sont SPI, I2C, CAN, PWM, PCM, etc. Fini le jour où vous réalisez que vous n'avez pas assez de bus i2c ou UARTS.
 
-Ce bus peut également prendre en charge des usages plus généraux comme l'interface homme-machine (clavier, clavier, manette de jeu, joysticks), l'audio (I2S, SPDIF), la vidéo basse résolution (oleds monochromes, spi tft lcd), le contrôle moteur (pas à pas) , Entrée-sortie à usage général (GPIO), gestion de la batterie (SOC, DOD, SOH, série, parallèle, courant de charge/décharge, tension, températures), etc.
+ This bus can also support more general usage like, humain-machine interface (keyboard,keypad,game controller,joysticks), audio (I2S, SPDIF), low-resolution video (monochome oleds,spi tft lcd), motor control (stepper), General Purpose Input Output (GPIO), Battery managing (SOC, DOD, SOH, Series, Parallel, Charge/Discarge Current, Voltage, Temperatures)  etc.
 
 SHER-Bus est également idéal pour la communication à usage général (comme UART, JASON, protobuf, modbus, etc.) entre les contrôleurs.
 
@@ -54,7 +57,7 @@ Il y a d’abord le contrôleur qui génère un paquet de données que d’autre
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Controler_example.svg)
 
-En deuxième lieu, il y a le pont dont la tâche consiste à combler le fossé entre le nouveau bus et le protocole déjà existant. Ils peuvent avoir plusieurs bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[IPB]). Ils sont principalement constitués d'ASIC ou de FPGA. Bien qu'à l'époque ou en écrivant aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Le microcontrôleur peut également faire office de pont. Brige peut être intégré dans une conception déjà existante sous forme de matrice ou dans un boîtier multi-matrice. En réutilisant plusieurs fois la conception, cela contribue à réduire la complexité de la refonte et à accélérer la mise sur le marché. Les responsables de la mise en œuvre du pont doivent faire attention aux licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
+En deuxième lieu, il y a le pont dont la tâche consiste à combler le fossé entre le nouveau bus et le protocole déjà existant. Ils peuvent avoir plusieurs bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[BPI]). Ils sont principalement constitués d'ASIC ou de FPGA. Bien qu'à l'époque ou en écrivant aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Le microcontrôleur peut également faire office de pont. Brige peut être intégré dans une conception déjà existante sous forme de matrice ou dans un boîtier multi-matrice. En réutilisant plusieurs fois la conception, cela contribue à réduire la complexité de la refonte et à accélérer la mise sur le marché. Les responsables de la mise en œuvre du pont doivent faire attention aux licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
 
 ![MultiDiedesign](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Intergrated_bridge.svg)
 
@@ -62,7 +65,7 @@ En troisième lieu, il y a le pont d'extrémité dont le travail consiste à con
 
 ## Architecture des paquets
 
-L'architecture des paquets suit la même philosophie que celle de l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire (P pour SHER-Bus) et chaque jeu est étiqueté par une lettre. (ex. : I M C A F D Q pour CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée dans l'ensemble des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[IPB]qui est à son tour intégré dans un package de flux (S) qui est à son tour intégré dans un package de protocole (S). Nous avons une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus, nous pouvons supprimer la couche BPI et avoir un message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque ET sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais un pont I2S le fait. ).
+L'architecture des paquets suit la même philosophie que celle de l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire (P pour SHER-Bus) et chaque jeu est étiqueté par une lettre. (ex. : I M C A F D Q pour CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée dans l'ensemble des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[IPB]qui est à son tour intégré dans un package de flux (S) qui est à son tour intégré dans un package de protocole (S). Nous avons une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus, nous pouvons supprimer la couche BPI et avoir un message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque AND sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais un pont I2S le fait. ).
 
 ![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Protocol_stack.svg)
 
@@ -86,7 +89,7 @@ Les messages d'interruption sont conçus pour être aussi proches que possible d
 
 #### Messages Boomerang (B)
 
-Les messages Bomerang, comme leur nom l'indique, sont destinés à revenir à l'expéditeur. Dès réception d'un message (B), le récepteur l'utilise pour effectuer une action, puis renvoie le même message avec une modification en fonction de cette action. Les messages (B) constituent une exception car ils doivent prendre en charge les messages d'identification de position du bus, sinon tout le monde dans le bus renverrait le message. Le renvoi du même message garantit également qu'il a été reçu correctement et permet la désynchronisation de la transaction (les allers-retours peuvent se produire avec d'autres messages les séparant). Un exemple serait une lecture I2C sur le bus. Un contrôleur peut demander la lecture de l'adresse W adresse X i2c sur le bus Y I2C du pont Z. Le pont répondrait après avoir effectué la lecture qu'il avait reçu n octets de données de l'adresse W X i2c salve sur le bus Y I2C en renvoyant le même message mais en échangeant l'octet récepteur/transciver du[IPB]et ajouter les données lues.
+Les messages Bomerang, comme leur nom l'indique, sont destinés à revenir à l'expéditeur. Dès réception d'un message (B), le récepteur l'utilise pour effectuer une action, puis renvoie le même message avec une modification en fonction de cette action. Les messages (B) constituent une exception car ils doivent prendre en charge les messages d'identification de position du bus, sinon tout le monde dans le bus renverrait le message. Le renvoi du même message garantit également qu'il a été reçu correctement et permet la désynchronisation de la transaction (les allers-retours peuvent se produire avec d'autres messages les séparant). Un exemple serait une lecture I2C sur le bus. Un contrôleur peut demander la lecture de l'adresse W X i2c sur le bus Y I2C du pont Z. Le pont répondrait après avoir effectué la lecture qu'il avait reçu n octets de données de l'adresse W X i2c salve sur le bus Y I2C en renvoyant le même message mais en échangeant l'octet récepteur/transciver du[IPB]et ajouter les données lues.
 
 #### Flux de messages (S)
 
@@ -111,7 +114,13 @@ Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide du messag
 ### Messages de haut niveau
 
 > **Avertissement**A écrire
->
-> ### Exemple de transaction
->
-> ![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/example_message.svg)
+
+Les messages de haut niveau sont des fonctions que le bus peut prendre. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application donné par la communauté BUS. (À DÉTERMINER)
+
+![Application](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Application.svg)
+
+### Exemple de transaction
+
+![Protocol stack](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/example_message.svg)
+
+Dans cet exemple, nous pouvons voir deux protocoles différents pouvant partager le même bus. Premièrement, nous pouvons voir un contrôleur essayer de lire des octets sur un esclave i2c. Dans la seconde on peut voir un paquet CAN. C'est intéressant car les messages CAN sont envoyés en utilisant uniquement la couche P. Cela montre la flexibilité du SHER-Bus dans la gestion de différentes applications. SHER-Bus peut utiliser la méthode d'adressage héritée au lieu de son BPI. Cela montre également l'avantage d'avoir un masque sur l'ensemble du paquet au lieu d'une région spécifique. L'adressage peut changer de place ou de longueur dans le paquet, mais à condition que l'expéditeur et le destinataire l'acceptent. L’autre dans le bus ignore simplement le message.
