@@ -74,13 +74,13 @@ Carte pouvant se connecter sur le banc de test. Elle contient un controlleur(RP2
 
 ### 3.2 Partie Logicielle
 
-#### 3.2.1 VHDL PHY (Xilinx/Lattice)
+#### 3.2.1 VHDL PHY/SerDes (Xilinx/Lattice)
 
 Le PHY ou plus communément le  Milieux Phisique gère la comunication au niveau fillaire. Il permet la sérialisation et déserialisation des message. 
 
 #### 3.2.2 VHDL AXI2SHER-Bus (Xilinx)
 
-Avec une carte Zybo concevoir un Périférique AXI pour CPU(arm ou microblaze). Le PHY est réutilisée avec l'ajout des masques et interuption
+Avec une carte Zybo concevoir un Périférique AXI pour CPU(arm ou [RISC-V](https://github.com/stnolting/neorv32)). Le PHY est réutilisée avec l'ajout des masques et interuption.
 
 #### 3.2.3 VHDL Bridge (Lattice)
 
@@ -92,7 +92,7 @@ milieux phisique émulée par les pio.
 
 #### 3.2.5 C/C++ SHER-Bus middleware (RP2040/Xilinx)
 
-Le middleware est la partie logicielle qui permet la gestions des messages envoyée et recus. Elle devrais être commune autant pour le RP2040 que pour le FPGA xilinx. seul le plus bas niveau doit être adaptée a cpu.
+Le middleware est la partie logicielle qui permet la gestions des messages envoyée et recus. Elle devrais être commune autant pour le RP2040 que pour le FPGA xilinx. seul le plus bas niveau doit être adaptée au circuit.
 
 #### 3.2.6 C/C++ USB2SHER-Bus end-bridge (RP2040)
 
