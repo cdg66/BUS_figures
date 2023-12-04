@@ -76,7 +76,7 @@ Carte pouvant se connecter sur le banc de test. Elle contient un controlleur(RP2
 
 #### 3.2.1 VHDL PHY/SerDes (Xilinx/Lattice)
 
-Le PHY ou plus communément le  Milieux Phisique gère la comunication au niveau fillaire. Il permet la sérialisation et déserialisation des message. 
+Le PHY ou plus communément le  Milieux Phisique gère la comunication au niveau fillaire. Il permet la sérialisation et déserialisation des message. Il serait intéressant d'utiliser [amaranth](https://github.com/amaranth-lang/amaranth) au lieu du VHDL pour la conception
 
 #### 3.2.2 VHDL AXI2SHER-Bus (Xilinx)
 
