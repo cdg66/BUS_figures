@@ -5,7 +5,9 @@
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -15,6 +17,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
@@ -68,7 +71,7 @@ L'architecture des paquets suit la même philosophie que celle de l'architecture
 
 ### Couche de protocole (P)
 
-La couche protocole est la seule couche obligatoire de la spécification. Il gère le minimum pour être une transaction valide. L'implémenteur utilise cette couche pour envoyer un message de très bas niveau, comme une communication point à point de type UART.[^2], étant donné que l'adressage est géré à un niveau supérieur, seule une configuration de bus point à point ou multipoint est possible en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas une pile lourde pour quelque chose de simple. Cela accorde également à l'implémenteur la liberté de créer une pile de protocoles personnalisée pour les applications qui ne sont pas couvertes par la pile existante. (ex. : SAE J1939 et CanOPEN sont tous deux des piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essayant de le faire. le même mais gratuit avec une pile commune qui aide l'implémenteur de pont et l'implémenteur de bus à avoir un terrain d'entente avec lequel travailler). le premier octet sert à indiquer s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. L'implémenteur peut envoyer un message personnalisé en définissant le premier octet sur 0 (0x00).
+La couche protocole est la seule couche obligatoire de la spécification. Il gère le minimum pour être une transaction valide. Il consiste en une seule impulsion d'horloge suivie de 32 octets codés en 8b/10b. L'implémenteur utilise cette couche pour envoyer un message de très bas niveau, comme une communication point à point de type UART.[^2], étant donné que l'adressage est géré à un niveau supérieur, seule une configuration de bus point à point ou multipoint est possible en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas une pile lourde pour quelque chose de simple. Cela accorde également à l'implémenteur la liberté de créer une pile de protocoles personnalisée pour les applications qui ne sont pas couvertes par la pile existante. (ex. : SAE J1939 et CanOPEN sont tous deux des piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essayant de le faire. le même mais gratuit avec une pile commune qui aide l'implémenteur de pont et l'implémenteur de bus à avoir un terrain d'entente avec lequel travailler). le premier octet sert à indiquer s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. L'implémenteur peut envoyer un message personnalisé en définissant le premier octet sur 0 (0x00).
 
 [^2]&#x3A; seuls 2 contrôleurs doivent être connectés sur le bus. Un UART multipoint doit être disponible dans la couche application.
 
@@ -80,7 +83,7 @@ La couche protocole est la seule couche obligatoire de la spécification. Il gè
 
 #### Control Messages (C)
 
-Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou un appareil réagit. Par exemple, un implémenteur peut effectuer une réinitialisation de l'appareil. Il est également utilisé par le[IPB]layer for Dynamic Adressing.
+Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou un appareil réagit. Par exemple, un implémenteur peut effectuer une réinitialisation de l'appareil. Il est également utilisé par le[BPI]layer for Dynamic Adressing.
 
 #### Messages d'interruption (I)
 
