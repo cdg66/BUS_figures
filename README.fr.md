@@ -2,7 +2,7 @@
 
 > [!IMPORTANT]
 >
-> Journée PMC du 8 decembre: pour des question et commentaire utiliser la section![discussions](https://github.com/cdg66/SHER-Bus/discussions). Pour plus de détail sur la structure du PMC allez![ici](https://github.com/cdg66/SHER-Bus/tree/main/PMC).
+> Journée PMC du 8 decembre: pour des questions et commentaires utiliser la section![discussions](https://github.com/cdg66/SHER-Bus/discussions). Pour plus de détail sur la structure du PMC allez![ici](https://github.com/cdg66/SHER-Bus/tree/main/PMC).
 
 > [!Avertissement]
 >
