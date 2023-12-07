@@ -2,14 +2,16 @@
 
 > [!IMPORTANT]
 >
-> Journée PMC du 8 decembre: pour des question et commentaire utiliser la section![discussions](https://github.com/cdg66/SHER-Bus/discussions). Pour plus de détail sur la structure du PMC allez![ici](https://github.com/cdg66/SHER-Bus/tree/main/PMC).
+> Journée PMC du 8 decembre: pour des questions et commentaires utiliser la section![discussions](https://github.com/cdg66/SHER-Bus/discussions). Pour plus de détail sur la structure du PMC allez![ici](https://github.com/cdg66/SHER-Bus/tree/main/PMC).
 
 > [!Avertissement]
 >
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -19,6 +21,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
