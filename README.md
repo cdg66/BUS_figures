@@ -1,5 +1,10 @@
 # SHER-Bus Pre-specifcation
-> **Warning**
+
+> [!IMPORTANT]
+>
+> Journée PMC du 8 decembre: pour des question et commentaire utiliser la section ![discussions](https://github.com/cdg66/SHER-Bus/discussions). Pour plus de détail sur la structure du PMC allez ![ici](https://github.com/cdg66/SHER-Bus/tree/main/PMC).
+
+> [!Warning]
 >
 > Content is not fixed and suject to change without notice!
 
