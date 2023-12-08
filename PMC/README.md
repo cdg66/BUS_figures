@@ -21,7 +21,7 @@ gantt
 
 ### 1.2 Test préliminaire du niveau physique
 
-Réaliser des tests pour choisir le niveau physique que SHER-Bus repose. Puisque c'est sr quoi repose tous ce que nous batirons nous devos s'assurer le plus tôt possible. les possiblitée sont M-LVDS,LVDS,B-LVDS, émulation de paire différentielle par io cmos. Nous devons faire ce travail avant de commencer a écrire la spécification car la spec dépend du niveau physique.
+Réaliser des tests pour choisir le niveau physique que SHER-Bus repose. Puisque c'est sur quoi repose tous ce que nous batirons nous devons s'assurer le plus tôt possible. les possiblitée sont M-LVDS,LVDS,B-LVDS, émulation de paire différentielle par io cmos. Nous devons faire ce travail avant de commencer a écrire la spécification car la spec dépend du niveau physique.
 
 D'un autre côté, il faut évaluer la possibilitée d'ajout d'une *shear bolt* dans le bus (probablement un end bridge SHER-Bus2SHER-Bus). En effet, un des problème des comunication sur Bus (I2C,CAN, etc) est que si un circuit brise il amène toute la communication avec lui. Il faut ajouter une mesure pour que le bus fail de manière controlée et determinée. Cela permet de faciliter la réparation et le diagnostic des produit comportant SHER-Bus et diminuer l'obsolescence programmée.
 
@@ -60,7 +60,7 @@ Lors du stage T4 la spécification sera publiée et la communautée open source 
 
 ## 3. Session 7 - Hiver 2024
 
-Vu que c'est un projet elec-info il y a évidememt deux partie au projet. Chaque partie peux-etre décomposée en sous partie suivanntes. Chaque sous partie peux ou pas être dépendantes des précédente.
+Vu que c'est un projet elec-info(génie robot vous êtes nos joker!)il y a évidememt deux partie au projet. Chaque partie peux-etre décomposée en sous partie suivanntes. Chaque sous partie peux ou pas être dépendantes des précédente.
 
 ### 3.1 Partie Matérielle
 
