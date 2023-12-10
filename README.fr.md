@@ -6,10 +6,12 @@
 
 > [!Avertissement]
 >
-> Le contenu n'est pas fixe et peut être modifié sans préavis !
+> Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -19,6 +21,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
@@ -66,13 +69,13 @@ Troisièmement, il y a le pont d'extrémité dont le travail consiste à connect
 
 ## Architecture des paquets
 
-L'architecture des paquets suit la même philosophie que celle adoptée par l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire (P pour SHER-Bus) et chaque jeu est étiqueté par une lettre. (ex. : I M C A F D Q pour CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée à la charge utile des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[BPI]qui est à son tour intégré dans un package de flux (S) qui à son tour est intégré dans un package de protocole (P). On a donc une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus on peut supprimer la couche BPI et avoir le message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque ET sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais d'un I2S. passage du pont).
+L'architecture des paquets suit la même philosophie que celle adoptée par l'architecture du processeur RISC-V. Un seul jeu d'instructions est obligatoire (P pour SHER-Bus) et chaque jeu est étiqueté par une lettre. (ex. : I M C A F D Q pour CPU risc-V) ou un mot/achronim (ex. : Zicsr). Ce qui est différent en raison de la nature de la communication, c'est que chaque couche est intégrée à la charge utile des couches situées en dessous. Par exemple, un paquet audio (A) est intégré dans une identification de protocole de bus.[IPB]qui est à son tour intégré dans un package de flux (S) qui à son tour est intégré dans un package de protocole (P). On a donc une structure comme P(S(BPI(A))), mais si ce message audio est adressé à tout le monde dans le bus on peut supprimer la couche BPI et avoir le message structuré comme ceci : P(S(A)). Cela augmente considérablement la flexibilité du bus. Un récepteur peut effectuer un masque ET sur l'ensemble du message pour voir si le message l'intéresse et éliminer ceux qui ne le sont pas (ex. : un pont I2C ne se soucie pas d'un package audio (A) mais d'un I2S. passage du pont).
 
 ![Transaction](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Protocol_stack.svg)
 
 ### Couche de protocole (P)
 
-La couche protocole est la seule couche obligatoire de la spécification. Il gère la charge utile minimale pour être une transaction valide. Il se compose d'une seule impulsion d'horloge suivie de 32 octets codés en 8b/10b. Les développeurs utilisent cette couche pour envoyer des messages de très bas niveau, comme une communication point à point de type UART.[^2], puisque l'adressage est géré à un niveau supérieur, seules les configurations de bus point à point ou multipoint sont possibles en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas une pile lourde pour quelque chose de simple. Cela donne également aux développeurs la liberté de créer des piles de protocoles personnalisées pour les applications qui ne sont pas couvertes par les piles existantes. (Ex. : SAE J1939 et CanOPEN sont deux piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essaie de faire la même chose mais gratuitement en ayant une pile commune afin d'aider les implémenteurs de pont et les implémenteurs de bus commencent du même point commun). Le premier octet indique s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. Les développeurs peuvent envoyer des messages personnalisés en définissant le premier octet sur 0(0x00).
+La couche protocole est la seule couche obligatoire de la spécification. Il gère la charge utile minimale pour être une transaction valide. Il se compose d'une seule impulsion d'horloge suivie de 32 octets codés en 8b/10b. Les développeurs utilisent cette couche pour envoyer des messages de très bas niveau, comme une communication point à point de type UART.[^2], puisque l'adressage est géré à un niveau supérieur, seules les configurations de bus point à point ou multipoint sont possibles en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas une lourde pile pour quelque chose de simple. Cela donne également aux développeurs la liberté de créer des piles de protocoles personnalisées pour les applications qui ne sont pas couvertes par les piles existantes. (Ex. : SAE J1939 et CanOPEN sont deux piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essaie de faire la même chose mais gratuitement en ayant une pile commune afin d'aider les implémenteurs de pont et les implémenteurs de bus commencent du même point commun). Le premier octet indique s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. Les développeurs peuvent envoyer des messages personnalisés en définissant le premier octet sur 0(0x00).
 
 [^2]&#x3A; seuls 2 contrôleurs doivent être connectés sur le bus. Un UART multipoint doit être disponible dans la couche application.
 
@@ -118,7 +121,7 @@ Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide d'un mess
 
 > **Avertissement**A écrire
 
-Les messages de haut niveau sont des fonctions que le bus peut assumer. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application qui est donné par la communauté BUS. (À DÉTERMINER)
+Les messages de haut niveau sont des fonctions que le bus peut prendre en charge. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application donné par la communauté BUS. (À DÉTERMINER)
 
 ![Application](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Application.svg)
 
