@@ -23,4 +23,4 @@ L'exemple suivant serait la conception d'un vêtement(chemise) perettant le sivi
 
 ![BMS](https://github.com/cdg66/SHER-Bus/blob/main/Figures/Battery.svg)
 
-la majoritée de controleur de batterie pour EV utilise le SPIisolée.([un exemple](https://www.analog.com/media/en/technical-documentation/data-sheets/LTC6806.pdf)) SHER-Bus serait très utile de par son côtée porche du matérielle et sont débit rapide se qui ferait un candidtat parfait pour cett application.
+La majoritée de controleur de batterie pour EV utilise le SPIisolée.([un exemple](https://www.analog.com/media/en/technical-documentation/data-sheets/LTC6806.pdf)) SHER-Bus serait très utile de par son côtée porche du matérielle et sont débit rapide se qui ferait un candidtat parfait pour cett application.
