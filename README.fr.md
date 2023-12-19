@@ -2,14 +2,16 @@
 
 > [!IMPORTANT]
 >
-> Journée PMC du 8 decembre: pour des questions et commentaires utiliser la section![discussions](https://github.com/cdg66/SHER-Bus/discussions). Pour plus de détail sur la structure du PMC allez![ici](https://github.com/cdg66/SHER-Bus/tree/main/PMC).
+> pour des questions et commentaires utiliser la section![discussions](https://github.com/cdg66/SHER-Bus/discussions). Pour plus de détail sur la structure du PMC allez![ici](https://github.com/cdg66/SHER-Bus/tree/main/PMC).
 
 > [!Avertissement]
 >
-> Le contenu n'est pas fixe et peut être modifié sans préavis !
+> Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -19,6 +21,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
@@ -40,11 +43,11 @@ Une autre raison pour laquelle un protocole tel que SHER-Bus est nécessaire est
 
 ![FreeSOC](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/SOC.svg)
 
-## Conception d'autobus
+## Bus design
 
 > **Avertissement**M LVDS n'est pas un choix fixe et est sujet à des tests et à une comparaison de prix (les émetteurs-récepteurs LVDS sont chers !)
 
-Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre en charge le multipoint dès le départ. Le bus est filaire-ou (niveau haut dominant). Jusqu'à 32 appareils (30 contrôleurs/pont et 2 ponts END) peuvent être connectés à une seule voie différentielle. 30 appareils peuvent sembler limités mais la limite théorique des appareils i2c sur SHER-Bus est de 22098![^1]Plusieurs connexions série (comme dans un fond de panier) peuvent être ajoutées pour augmenter le débit. L'horloge est intégrée au flux de données, il n'est donc pas nécessaire d'ajouter une piste d'horloge. Une horloge en option peut être ajoutée pour synchroniser des fonctions telles que l'audio. Il utilise un codage de 8 bits à 10 bits (ou Manchester idk pour l'instant) sur la couche physique pour garantir l'équilibre DC et fournir une première couche de vérification des erreurs.
+The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. The bus is wired-or (level high dominant). Up to 32 devices (30 controlers/bridge and 2 END bridges) can be connected to a single differential lane. 30 devices can sound limited but the theorical limit of i2c device on SHER-Bus is 22098![^1]Plusieurs connexions série (comme dans un fond de panier) peuvent être ajoutées pour augmenter le débit. L'horloge est intégrée au flux de données, il n'est donc pas nécessaire d'ajouter une piste d'horloge. Une horloge en option peut être ajoutée pour synchroniser des fonctions telles que l'audio. Il utilise un codage de 8 bits à 10 bits (ou Manchester idk pour l'instant) sur la couche physique pour garantir l'équilibre DC et fournir une première couche de vérification des erreurs.
 
 [^1] : 127 appareil i2c_6 ports maîtres i2c sur 1 pont_29 ponts (il nous faut au minimum 1 contrôleur) = 22098
 
@@ -72,7 +75,7 @@ L'architecture des paquets suit la même philosophie que celle adoptée par l'ar
 
 ### Couche de protocole (P)
 
-La couche protocole est la seule couche obligatoire de la spécification. Il gère la charge utile minimale pour être une transaction valide. Il se compose d'une seule impulsion d'horloge suivie de 32 octets codés en 8b/10b. Les développeurs utilisent cette couche pour envoyer des messages de très bas niveau, comme une communication point à point de type UART.[^2], puisque l'adressage est géré à un niveau supérieur, seules les configurations de bus point à point ou multipoint sont possibles en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas une lourde pile pour quelque chose de simple. Cela donne également aux développeurs la liberté de créer des piles de protocoles personnalisées pour les applications qui ne sont pas couvertes par les piles existantes. (Ex. : SAE J1939 et CanOPEN sont deux piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essaie de faire la même chose mais gratuitement en ayant une pile commune afin d'aider les implémenteurs de pont et les implémenteurs de bus commencent du même point commun). Le premier octet indique s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. Les développeurs peuvent envoyer des messages personnalisés en définissant le premier octet sur 0(0x00).
+La couche protocole est la seule couche obligatoire de la spécification. Il gère la charge utile minimale pour être une transaction valide. Il se compose d'une seule impulsion d'horloge suivie de 32 octets codés en 8b/10b. Les développeurs utilisent cette couche pour envoyer des messages de très bas niveau, comme une communication point à point de type UART.[^2], puisque l'adressage est géré à un niveau supérieur, seules les configurations de bus point à point ou multipoint sont possibles en utilisant uniquement ce niveau. Il s'agit d'une fonctionnalité car dans de nombreuses applications, vous ne voudriez pas une pile lourde pour quelque chose de simple. Cela donne également aux développeurs la liberté de créer des piles de protocoles personnalisées pour les applications qui ne sont pas couvertes par les piles existantes. (Ex. : SAE J1939 et CanOPEN sont deux piles construites sur la nature non restrictive du protocole CAN, SHER-Bus essaie de faire la même chose mais gratuitement en ayant une pile commune afin d'aider les implémenteurs de pont et les implémenteurs de bus commencent du même point commun). Le premier octet indique s'il s'agit d'un paquet standard ou personnalisé. Un un (1) sur le MSB du premier octet indique que la charge utile est un message conforme au bus SER. Les développeurs peuvent envoyer des messages personnalisés en définissant le premier octet sur 0(0x00).
 
 [^2]&#x3A; seuls 2 contrôleurs doivent être connectés sur le bus. Un UART multipoint doit être disponible dans la couche application.
 
@@ -88,7 +91,7 @@ Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou 
 
 #### Messages d'interruption (I)
 
-Les messages d'interruption sont conçus pour être aussi proches que possible des interruptions informatiques traditionnelles. Ils peuvent utiliser le[IPB]mais sont davantage destinés à l'attention de Bus Wise. Par exemple, un ADC peut envoyer une interruption pour indiquer que de nouvelles données sont prêtes à être lues.
+Les messages d'interruption sont conçus pour être aussi proches que possible des interruptions informatiques traditionnelles. Ils peuvent utiliser le[IPB] but are more meant for Bus Wise attention. For example An ADC can send a Interupt to say that fresh data is ready to be read.
 
 #### Messages Boomerang (B)
 
@@ -118,7 +121,7 @@ Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide d'un mess
 
 > **Avertissement**A écrire
 
-Les messages de haut niveau sont des fonctions que le bus peut prendre en charge. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application donné par la communauté BUS. (À DÉTERMINER)
+Les messages de haut niveau sont des fonctions que le bus peut assumer. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application qui est donné par la communauté BUS. (À DÉTERMINER)
 
 ![Application](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Application.svg)
 
