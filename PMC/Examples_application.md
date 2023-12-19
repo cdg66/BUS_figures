@@ -1,26 +1,23 @@
-# Example 
-
-voici 4 exemples ou SHER-Bus résaurait un/des problèmes au niveau de l'électronique moderne.
-
-## 1 drone
+### Exemple 1: Drone
 
 ![VAMUdeS thirst trap](https://github.com/cdg66/SHER-Bus/blob/main/Figures/Drone.svg)
 
-Dans une telle configuration SHER-Bus pourrait théoriquement supporter 24 moteur BLDC. Il serait donc facile de upscale ou downscale a un quad, hexa ou heptacoptère l'achitecture du drone.
+Dans une configuration de ce type, SHER-Bus pourrait théoriquement prendre en charge jusqu'à 24 moteurs BLDC. Il serait donc aisé d'adapter l'architecture du drone à un quadrirotor, hexacoptère ou heptacoptère, que ce soit pour une augmentation ou une diminution de l'échelle.
 
+### Exemple 2: Ordinateur portable Framework
 
-## 2 [framework laptop](https://frame.work/ca/en/products/laptop16-diy-amd-7040)
+[Framework Laptop](https://frame.work/ca/en/products/laptop16-diy-amd-7040)
 
-Si vous ne le savez pas déjà la compagnie framework on concu un portable capable de changer ses périférique et leur configuration *on-the-fly* il on réussi cet exploit en utilisant l'USB 2.0. Cepandant cela implique une lourde gestion *under-the-hood* (utilisation de hub etc) car les ports USB sont limitée sur un portable. Chaque port doit avoir sa paire différentielle plus alimentation ce qui fait beacoup de cablage et ainsi augmentant les coûts. Avec SHER-Bus une seule paire déservirait tout les modules et se connecterait a un seul port usb(via un BRIDGE) économisant ainsi les précieuse ressource(cables, ports usb ,etc).
+Si vous n'en avez pas encore connaissance, la société Framework a conçu un ordinateur portable capable de modifier ses périphériques et leur configuration "en temps réel" (*on-the-fly*) en utilisant l'USB 2.0. Cependant, cela implique une gestion complexe en arrière (avec l'utilisation de hubs, etc.) car les ports USB sont limités sur un ordinateur portable. Chaque port doit avoir sa propre paire différentielle ainsi qu'une alimentation, ce qui entraîne un câblage considérable et, par conséquent, une augmentation des coûts. Avec SHER-Bus, une seule paire pourrait desservir tous les modules et se connecter à un seul port USB (via un pont), économisant ainsi de précieuses ressources (câbles, ports USB, etc.).
 
-## 3 Capture de mouvement.
+### Exemple 3: Capture de mouvement
 
 ![mouvement](https://github.com/cdg66/SHER-Bus/blob/main/Figures/Mouvement.svg)
 
-L'exemple suivant serait la conception d'un vêtement(chemise) perettant le sivit de mouvement d'une personne pour des application VR/AR/Médicale. sur le diagramme du haut on se rend vite compte que plus le nombre d'IMU augemente plus la complexitée du cablage augemente ce qui est un problème quand le produit doit être le plus léger possible pour ne pas restreindre les mouvements. De plus l'i2c est un bus très lent ce qui limite la vitesse d'acquision et ainsi la quantitée de donnée utilisable, mais, avec une adoption générale du bus, un fabricant d'IMU pourrait sortir un capteur avec un port SHER-Bus natif.
+Un exemple concret serait la conception d'un vêtement (comme une chemise) permettant de suivre les mouvements d'une personne à des fins VR/AR/médicales. Sur le schéma ci-dessus, on remarque rapidement que plus le nombre d'IMU augmente, plus la complexité du câblage augmente, ce qui pose problème lorsque le produit doit être aussi léger que possible pour ne pas limiter les mouvements. De plus, l'I2C est un bus très lent, ce qui limite la vitesse d'acquisition et donc la quantité de données utilisables. Cependant, avec une adoption généralisée du bus SHER-Bus, un fabricant d'IMU pourrait proposer un capteur doté d'un port SHER-Bus natif.
 
-## 4 Batterie pour EV.
+### Exemple 4: Batterie pour véhicule électrique (EV)
 
 ![BMS](https://github.com/cdg66/SHER-Bus/blob/main/Figures/Battery.svg)
 
-La majoritée de controleur de batterie pour EV utilise le SPIisolée.([un exemple](https://www.analog.com/media/en/technical-documentation/data-sheets/LTC6806.pdf)) SHER-Bus serait très utile de par son côtée porche du matérielle et sont débit rapide se qui ferait un candidtat parfait pour cett application.
+La majorité des contrôleurs de batterie pour véhicules électriques utilise le SPI isolé ([un exemple](https://www.analog.com/media/en/technical-documentation/data-sheets/LTC6806.pdf)). SHER-Bus serait très utile grâce à sa proximité matérielle et à son débit rapide, ce qui en ferait un candidat parfait pour cette application.
