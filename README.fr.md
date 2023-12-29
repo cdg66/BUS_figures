@@ -6,10 +6,12 @@
 
 > [!Avertissement]
 >
-> Le contenu n'est pas fixe et peut être modifié sans préavis !
+> Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -19,6 +21,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
@@ -40,11 +43,11 @@ Une autre raison pour laquelle un protocole tel que SHER-Bus est nécessaire est
 
 ![FreeSOC](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/SOC.svg)
 
-## Bus design
+## Conception d'autobus
 
 > **Avertissement**M LVDS n'est pas un choix fixe et est sujet à des tests et à une comparaison de prix (les émetteurs-récepteurs LVDS sont chers !)
 
-The Bus is based on the M-LVDS(aka, TIA/EIA-899). It's design to support multipoint from the get go. The bus is wired-or (level high dominant). Up to 32 devices (30 controlers/bridge and 2 END bridges) can be connected to a single differential lane. 30 devices can sound limited but the theorical limit of i2c device on SHER-Bus is 22098![^1]Plusieurs connexions série (comme dans un fond de panier) peuvent être ajoutées pour augmenter le débit. L'horloge est intégrée au flux de données, il n'est donc pas nécessaire d'ajouter une piste d'horloge. Une horloge en option peut être ajoutée pour synchroniser des fonctions telles que l'audio. Il utilise un codage de 8 bits à 10 bits (ou Manchester idk pour l'instant) sur la couche physique pour garantir l'équilibre DC et fournir une première couche de vérification des erreurs.
+Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre en charge le multipoint dès le départ. Le bus est filaire-ou (niveau haut dominant). Jusqu'à 32 appareils (30 contrôleurs/pont et 2 ponts END) peuvent être connectés à une seule voie différentielle. 30 appareils peuvent sembler limités mais la limite théorique des appareils i2c sur SHER-Bus est de 22098![^1]Plusieurs connexions série (comme dans un fond de panier) peuvent être ajoutées pour augmenter le débit. L'horloge est intégrée au flux de données, il n'est donc pas nécessaire d'ajouter une piste d'horloge. Une horloge en option peut être ajoutée pour synchroniser des fonctions telles que l'audio. Il utilise un codage de 8 bits à 10 bits (ou Manchester idk pour l'instant) sur la couche physique pour garantir l'équilibre DC et fournir une première couche de vérification des erreurs.
 
 [^1] : 127 appareil i2c_6 ports maîtres i2c sur 1 pont_29 ponts (il nous faut au minimum 1 contrôleur) = 22098
 
@@ -88,7 +91,7 @@ Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou 
 
 #### Messages d'interruption (I)
 
-Les messages d'interruption sont conçus pour être aussi proches que possible des interruptions informatiques traditionnelles. Ils peuvent utiliser le[IPB] but are more meant for Bus Wise attention. For example An ADC can send a Interupt to say that fresh data is ready to be read.
+Les messages d'interruption sont conçus pour être aussi proches que possible des interruptions informatiques traditionnelles. Ils peuvent utiliser le[IPB]mais sont davantage destinés à l'attention de Bus Wise. Par exemple, un ADC peut envoyer une interruption pour indiquer que de nouvelles données sont prêtes à être lues.
 
 #### Messages Boomerang (B)
 
