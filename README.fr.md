@@ -6,7 +6,7 @@
 
 > [!Avertissement]
 >
-> Le contenu n'est pas fixe et peut être modifié sans préavis !
+> Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
 <!-- The below code snippet is automatically added from Acronim.md -->
@@ -118,7 +118,7 @@ Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide d'un mess
 
 > **Avertissement**A écrire
 
-Les messages de haut niveau sont des fonctions que le bus peut prendre en charge. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application donné par la communauté BUS. (À DÉTERMINER)
+Les messages de haut niveau sont des fonctions que le bus peut assumer. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application qui est donné par la communauté BUS. (À DÉTERMINER)
 
 ![Application](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Application.svg)
 
