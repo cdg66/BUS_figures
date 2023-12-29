@@ -19,5 +19,11 @@ Un exemple concret serait la conception d'un vêtement (comme une chemise) perme
 ### Exemple 4: Batterie pour véhicule électrique (EV)
 
 ![BMS](https://github.com/cdg66/SHER-Bus/blob/main/Figures/Battery.svg)
-
 La majorité des contrôleurs de batterie pour véhicules électriques utilise le SPI isolé ([un exemple](https://www.analog.com/media/en/technical-documentation/data-sheets/LTC6806.pdf)). SHER-Bus serait très utile grâce à sa proximité matérielle et à son débit rapide, ce qui en ferait un candidat parfait pour cette application.
+
+### Exemple 5: liaison de deux protocoles incompatible
+
+![MQTT et CANopen](https://github.com/cdg66/SHER-Bus/blob/main/Figures/MQTT_CANopen.svg)
+
+Dans cette application le système doit lier deux protocoles complètement différent et incompatible. Dans un cas nous avons une pile logicielle [MQTT](https://mqtt.org/) pour les applications IOT. De l'autre nous avons le [CANopen](https://www.can-cia.org/canopen/) une pille utilisant le CAN pour l'automation. Il existe bien des [Ponts matérielle](http://www.adfweb.com/download/filefold/MN67940_ENG.pdf) entre les deux. Cependant il sont limitée en fonction. Si les deux sont suportée par SHER-Bus alors le pont se peut faire très facilement. Comme on peut le voir sur le schéma l'_Application Processor_ fait le liens entre CANopen et MQTT et ce même s'il sont connectée sur le même bus. Les device MQTT ignore les message CANopen et inversement.
+
