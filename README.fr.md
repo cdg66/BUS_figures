@@ -9,7 +9,9 @@
 > Le contenu n'est pas fixe et peut être modifié sans préavis !
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=Acronim.md) -->
+
 <!-- The below code snippet is automatically added from Acronim.md -->
+
 ```md
 SHER-Bus Stand for:
 
@@ -19,6 +21,7 @@ and
 
 SHER-Bus Handles Extensive Resource Bridging, Unifying Systems
 ```
+
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ![Bus Layout](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/BUS_layout.svg)
@@ -42,7 +45,7 @@ Une autre raison pour laquelle un protocole tel que SHER-Bus est nécessaire est
 
 ## Conception d'autobus
 
-> **Avertissement**M LVDS n'est pas un choix fixe et est sujet à des tests et à une comparaison de prix (les émetteurs-récepteurs LVDS sont chers !)
+> **Avertissement**MLVDS n'est pas un choix fixe et est soumis à des tests et à une comparaison de prix (les émetteurs-récepteurs LVDS sont chers !)
 
 Le bus est basé sur le M-LVDS (alias TIA/EIA-899). Il est conçu pour prendre en charge le multipoint dès le départ. Le bus est filaire-ou (niveau haut dominant). Jusqu'à 32 appareils (30 contrôleurs/pont et 2 ponts END) peuvent être connectés à une seule voie différentielle. 30 appareils peuvent sembler limités mais la limite théorique des appareils i2c sur SHER-Bus est de 22098![^1]Plusieurs connexions série (comme dans un fond de panier) peuvent être ajoutées pour augmenter le débit. L'horloge est intégrée au flux de données, il n'est donc pas nécessaire d'ajouter une piste d'horloge. Une horloge en option peut être ajoutée pour synchroniser des fonctions telles que l'audio. Il utilise un codage de 8 bits à 10 bits (ou Manchester idk pour l'instant) sur la couche physique pour garantir l'équilibre DC et fournir une première couche de vérification des erreurs.
 
@@ -58,11 +61,11 @@ Il y a d’abord le contrôleur qui génère des paquets de données que d’aut
 
 ![controller example](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Controler_example.svg)
 
-Deuxièmement, il y a le pont dont la tâche est de combler le fossé entre le nouveau bus et les protocoles déjà existants. Ils peuvent avoir une multitude de bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[IPB]). Ils sont principalement constitués d’ASIC ou de FPGA. Bien qu'au moment d'écrire ces lignes, aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Les microcontrôleurs peuvent également servir de ponts. Les ponts peuvent être intégrés dans des conceptions déjà existantes en matrice ou en boîtier multi-matrice. Conformément à la règle de la conception une fois, réutilisation partout, cela permet de réduire la complexité de la refonte et d'accélérer la mise sur le marché. Les responsables de la mise en œuvre des ponts doivent être prudents en ce qui concerne les licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
+Deuxièmement, il y a le pont dont la tâche est de combler le fossé entre le nouveau bus et les protocoles déjà existants. Ils peuvent avoir une multitude de bus série (jusqu'à 6 et 1 canal de contrôle général utilisant[IPB]). Ils sont principalement constitués d’ASIC ou de FPGA. Bien qu'au moment d'écrire ces lignes, aucun code ASIC ou FPGA n'ait été fabriqué/écrit. Les microcontrôleurs peuvent également servir de ponts. Les ponts peuvent être intégrés dans des conceptions déjà existantes en matrice ou en boîtier multi-matrice. Conformément à la règle de conception une fois, réutilisation partout, il contribue à réduire la complexité de la refonte et à accélérer la mise sur le marché. Les responsables de la mise en œuvre des ponts doivent être prudents en ce qui concerne les licences des bus existants, car certains ne sont pas libres de les mettre en œuvre.
 
 ![MultiDiedesign](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Intergrated_bridge.svg)
 
-Troisièmement, il y a le pont d'extrémité dont le travail consiste à connecter plusieurs bus SHER ensemble ou d'autres bus HAUTE VITESSE (comme USB, SDIO ou Ethernet). Ils terminent le bus (là où se trouve la résistance de terminaison), c'est pourquoi ils sont limités à 2 qui peuvent être connectés sur le bus. Ils sont complexes et non obligatoires.
+Troisièmement, il y a le pont End dont le travail consiste à connecter plusieurs bus SHER ensemble ou d'autres bus HAUTE VITESSE (comme USB, SDIO ou Ethernet). Ils terminent le bus (là où se trouve la résistance de terminaison), c'est pourquoi ils sont limités à 2 qui peuvent être connectés sur le bus. Ils sont complexes et non obligatoires.
 
 ## Architecture des paquets
 
@@ -84,7 +87,7 @@ La couche protocole est la seule couche obligatoire de la spécification. Il gè
 
 #### Control Messages (C)
 
-Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou un périphérique réagit. Par exemple, un implémenteur peut effectuer une réinitialisation de l'appareil. Il est également utilisé par le[IPB]layer for Dynamic Adressing.
+Les messages de contrôle sont utilisés pour modifier la façon dont le bus ou un périphérique réagit. Par exemple, un implémenteur peut effectuer une réinitialisation de l'appareil. Il est également utilisé par le[IPB]couche pour l’adressage dynamique.
 
 #### Messages d'interruption (I)
 
@@ -106,11 +109,11 @@ L'identification de la position du bus donne aux contrôleurs un moyen de commun
 
 Chaque appareil sur le bus possède une adresse prédéfinie qui ne change pas. Il est de la responsabilité de l'implémenteur du bus de définir une adresse unique pour chaque appareil présent sur le bus. Ce mode d'adressage est utile lorsque l'implémenteur connaît la disposition du bus et qu'elle ne change pas comme dans un système entièrement fermé sans ports extérieurs. A documenter.
 
-#### Pseudo-Dynamic Addressing
+#### Adressage pseudo-dynamique
 
 Chaque appareil obtient son adresse en utilisant un mécanisme externe. Par exemple, dans un fond de panier, chaque emplacement est étiqueté électroniquement (gpio ou eeprom i2c) avec une adresse unique. Les appareils SHER-Bus lisent cette adresse lors de la mise sous tension et l'utilisent pour la communication. A documenter.
 
-#### Dynamic Addressing
+#### Adressage dynamique
 
 Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide d'un message Control(C). A documenter.
 
@@ -118,7 +121,7 @@ Chaque appareil obtient son adresse en demandant au SHER-Bus à l'aide d'un mess
 
 > **Avertissement**A écrire
 
-Les messages de haut niveau sont des fonctions que le bus peut assumer. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application qui est donné par la communauté BUS. (À DÉTERMINER)
+Les messages de haut niveau sont des fonctions que le bus peut assumer. Du protocole de transport hérité à une communication basée sur des fonctions (gestion de la batterie, enregistrement des données, vidéo, audio), SHER-Bus peut le faire. Chaque application est définie par un code d'application donné par la communauté BUS. (À DÉTERMINER)
 
 ![Application](https://github.com/cdg66/SHER-BUS_figures/blob/main/Figures/Application.svg)
 
