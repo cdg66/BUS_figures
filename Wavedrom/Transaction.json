@@ -1,0 +1,7 @@
+{signal: [
+    {name: 'virtual clock', wave: 'p..............................................|..'},
+    {name: 'SB', 			  wave: 'x.103.......4...............5...............6..|.x',data: "Arbitration(8bits) BPI(16bits) Aplication_code(16bits) Payload"},
+    {name: "Arbitration",   wave: 'xxxx345679.3xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',data: "P C I E S RSV BPI"},
+    {name: "BPI",           wave: 'xxxxxxxxxxxx3....4..5....6..xxxxxxxxxxxxxxxxxxxxxx',data: "Tx_position Tx_Subdevice Rx_position Rx_Subdevice"},
+  ]}
+  

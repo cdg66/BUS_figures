@@ -1,0 +1,6 @@
+{signal: [
+    {name: 'virtual clock', wave: 'p....|......'},
+    {name: 'SB+', wave: 'z.103.|.....z',data: "body(256bits)"},
+    {name: 'SB-', wave: 'z.014.|.....z',data: "body(256bits)"},
+  ]}
+  
